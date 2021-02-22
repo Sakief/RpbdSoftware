@@ -39,14 +39,14 @@ class MarketPoint(models.Model):
     class Meta:
         db_table = "market"
 
-# class Zone(models.Model):
-#     zone_code = models.CharField(verbose_name="Zone Code",max_length=20,primary_key=True)
-#     zone_name = models.CharField(verbose_name="Zone Name",max_length=20)
+class Zone(models.Model):
+    zone_code = models.CharField(verbose_name="Zone Code",max_length=20,primary_key=True)
+    zone_name = models.CharField(verbose_name="Zone Name",max_length=20)
 
-#     def __str__(self):
-#         return self.zone_code
-#     class Meta:
-#         db_table = "zone"
+    def __str__(self):
+        return self.zone_code
+    class Meta:
+        db_table = "zone"
 
 # class Profile(models.Model):
 #     record_id = models.CharField(verbose_name="Record No",max_length=20,primary_key=True)

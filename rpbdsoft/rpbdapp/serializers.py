@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from rpbdapp.models import Division,District,Thana,MarketPoint
+from rpbdapp.models import Division,District,Thana,MarketPoint,Zone
 
 class DivisionSerializer(serializers.ModelSerializer):
 
@@ -28,6 +28,13 @@ class MarketPointSerializer(serializers.ModelSerializer):
         model = MarketPoint
         fields=('market_code',
                 'market_name')
+
+class ZoneSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Zone
+        fields=('zone_code',
+                'zone_name')
 
 # class ProfilRecordSerializer(serializers.ModelSerializer):
 

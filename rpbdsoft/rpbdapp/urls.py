@@ -9,6 +9,9 @@ urlpatterns=[
     path('thana-detail/<str:pk>/',views.ThanaDetailView.as_view()),
     path('market-list/', views.MarketListView.as_view()),
     path('market-detail/<str:pk>/',views.MarketDetailView.as_view()),
+    path('zone-list/', views.ZoneListView.as_view()),
+    path('zone-detail/<str:pk>/',views.ZoneDetailView.as_view()),
+
     # path('division-detail/<str:pk>/',views.division_detail,name="division-detail"),
     # path('division-list-search/', views.DivisionListView.as_view()),
     # path('division-create/',views.division_create,name="division-create"),

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse,Http404
 from rest_framework.decorators import api_view
-from rpbdapp.models import Division,District,Thana,MarketPoint
-from rpbdapp.serializers import DivisionSerializer,DistrictSerializer,ThanaSerializer,MarketPointSerializer
+from rpbdapp.models import Division,District,Thana,MarketPoint,Zone
+from rpbdapp.serializers import DivisionSerializer,DistrictSerializer,ThanaSerializer,MarketPointSerializer,ZoneSerializer
 from rest_framework.response import Response
 from rest_framework import filters
 from rest_framework import generics,status
@@ -130,4 +130,43 @@ class MarketDetailView(APIView):
         markets.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class ZoneListView(APIView):
 
+    def get(self,request,format=None):
+        zones = Zone.objects.all()
+        serializer = ZoneSerializer(zones,many=True)
+        return Response(serializer.data)
+            
+    def post(self,request,format=None):
+        serializer = ZoneSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ZoneDetailView(APIView):
+   
+    def get_object(self,pk):
+        try:
+            return Zone.objects.get(pk=pk)
+        except Zone.DoesNotExist:
+            raise Http404
+
+    
+    def get(self,request,pk):
+        zones = self.get_object(pk)
+        serializer = ZoneSerializer(zones)
+        return Response(serializer.data)
+    
+    def put(self,request,pk,format=None):
+        zones = self.get_object(pk)
+        serializer = ZoneSerializer(zones,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self,request,pk,format=None):
+        zones = self.get_object(pk)
+        zones.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

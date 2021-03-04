@@ -7,12 +7,23 @@ import { DivisionService } from '../../services/division.service';
   styleUrls: ['./division.component.scss']
 })
 export class DivisionComponent implements OnInit {
+  [divisions: string]: Object;
 
-  constructor(private divisionservice:DivisionService) {
+  // private divisions = any
+
+  constructor(
     
-  }
+    private divisionservice:DivisionService
+    ){}
 
-  ngOnInit(): void {
+  ngOnInit(){
+    
+    this.divisionservice.getDivisions().subscribe(
+      data => {
+      this.divisions = data;
+      },
+      error => console.log(error)
+    );
   }
 
 }

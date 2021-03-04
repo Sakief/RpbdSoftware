@@ -1,6 +1,9 @@
 from django.urls import path
 from rpbdapp import views
 
+# router =  routers.DefaultRouters()
+# router.register('')
+
 urlpatterns=[
     # path('division-list/',views.division_list,name="division-list"),
     path('api/division-list/',views.DivisionListView.as_view()),

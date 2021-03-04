@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule, Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { MainModule } from './main/main.module';
@@ -20,6 +21,7 @@ const routes : Routes = [
     BrowserModule,
     MainModule,
     AuthModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   exports:[

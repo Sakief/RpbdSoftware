@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Division(models.Model):
-    division_code = models.CharField(verbose_name="Division Code",max_length=20,primary_key=True)
+    division_code = models.CharField(verbose_name="Division Code",max_length=2,primary_key=True)
     division_name = models.CharField(verbose_name="Division Name",max_length=20)
 
     def __str__(self):
@@ -12,7 +12,7 @@ class Division(models.Model):
         db_table = "division"
 
 class District(models.Model):
-    district_code = models.CharField(verbose_name="District Code",max_length=20,primary_key=True)
+    district_code = models.CharField(verbose_name="District Code",max_length=4,primary_key=True)
     district_name = models.CharField(verbose_name="Ditrict Nmae",max_length=20)
 
     def __str__(self):
@@ -22,7 +22,7 @@ class District(models.Model):
         db_table = "district"
 
 class Thana(models.Model):
-    thana_code = models.CharField(verbose_name="Thana Code",max_length=20,primary_key=True)
+    thana_code = models.CharField(verbose_name="Thana Code",max_length=6,primary_key=True)
     thana_name = models.CharField(verbose_name="Thana Name",max_length=20)
 
     def __str__(self):
@@ -31,7 +31,7 @@ class Thana(models.Model):
         db_table = "thana"
 
 class MarketPoint(models.Model):
-    market_code = models.CharField(verbose_name="Market Point Code",max_length=20,primary_key=True)
+    market_code = models.CharField(verbose_name="Market Point Code",max_length=10,primary_key=True)
     market_name = models.CharField(verbose_name="Market Point Name",max_length=20)
 
     def __str__(self):
@@ -40,7 +40,7 @@ class MarketPoint(models.Model):
         db_table = "market"
 
 class Zone(models.Model):
-    zone_code = models.CharField(verbose_name="Zone Code",max_length=20,primary_key=True)
+    zone_code = models.CharField(verbose_name="Zone Code",max_length=8,primary_key=True)
     zone_name = models.CharField(verbose_name="Zone Name",max_length=20)
 
     def __str__(self):

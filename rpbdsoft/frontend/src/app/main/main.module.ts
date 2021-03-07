@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AgGridModule } from 'ag-grid-angular';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -8,6 +9,7 @@ import { DistrictService } from '../services/district.service';
 
 import { DivisionComponent } from './division/division.component';
 import { DistrictComponent } from './district/district.component';
+import { GridComponent } from '../grid/grid.component';
 
 
 import { MainComponent } from './main.component';
@@ -20,11 +22,13 @@ const routes:Routes=[
   declarations: [
     MainComponent,
     DistrictComponent,
-    DivisionComponent
+    DivisionComponent, 
+    GridComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    AgGridModule.withComponents(GridComponent)
   ],
   providers:[
     DivisionService,

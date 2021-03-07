@@ -1,1 +1,12 @@
-<p>district works!</p>
+<table class="table table-bordered">
+    <tr>
+        <th>District Code</th>
+        <th>District Name</th>
+        
+    </tr>
+    <tr *ngFor="let district of districts">
+        <td>{{district.district_code}}</td>
+        <td>{{district.district_name}}</td>
+
+    </tr>
+</table>

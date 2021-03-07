@@ -1,1 +1,12 @@
-<p>{{divisions}}</p>
+<table class="table table-bordered">
+    <tr>
+        <th>Division Code</th>
+        <th>Division Name</th>
+        
+    </tr>
+    <tr *ngFor="let division of divisions">
+        <td>{{division.division_code}}</td>
+        <td>{{division.division_name}}</td>
+
+    </tr>
+</table>

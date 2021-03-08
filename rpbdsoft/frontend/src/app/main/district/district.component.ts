@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DistrictService } from '../../services/district.service';
+import { DistrictViewComponent } from './district-view/district-view.component';
 
 @Component({
   selector: 'app-district',

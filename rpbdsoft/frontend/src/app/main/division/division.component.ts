@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DivisionService } from '../../services/division.service'; 
+import { DivisionViewComponent } from './division-view/division-view.component';
 
 @Component({
   selector: 'app-division',

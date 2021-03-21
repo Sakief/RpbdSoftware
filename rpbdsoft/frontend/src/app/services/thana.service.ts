@@ -8,7 +8,12 @@ import { Observable } from  'rxjs';
 })
 export class ThanaService {
 
+  body: any;
+
   baseUrl = "http://127.0.0.1:8000/api/thana-list/"; 
+  thanaUrl = "http://127.0.0.1:8000/api/thana-detail/"
+    save: any;
+  
 
   constructor(
     private httpClient:HttpClient
@@ -16,6 +21,9 @@ export class ThanaService {
 
   getThana(){
     return this.httpClient.get(this.baseUrl);
-    
+  }
+
+  updateThana(){
+    return this.httpClient.put(this.thanaUrl,this.body);
   }
 }

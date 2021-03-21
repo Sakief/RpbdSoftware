@@ -52,11 +52,21 @@ class ThanaListView(APIView):
         response = serializer.data
         return Response(response,status=status.HTTP_200_OK)
     @action(detail=True, methods=['POST'])
+    
     def post(self,request,fromat=None):
         serializer = ThanaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['PUT'])
+    def put(self,request,pk,format=None):
+        thanas = self.get_object(pk)
+        serializer = ThanaSerializer(thanas,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 class ThanaDetailView(APIView):

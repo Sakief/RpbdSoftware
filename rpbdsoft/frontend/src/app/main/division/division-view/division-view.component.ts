@@ -51,7 +51,7 @@ export class DivisionViewComponent implements OnInit {
           {
             headerName:"Division Code" ,
             field: 'division_code', 
-            editable: true, 
+            editable: false, 
             filter: true, 
             resizable: true, 
             sortable:true 
@@ -62,6 +62,7 @@ export class DivisionViewComponent implements OnInit {
             field: 'division_name',
             filter: true,
             resizable: true,
+            editable:true,
             sortable: true
           }
             

@@ -9,7 +9,7 @@ urlpatterns=[
     path('api/division-list/',views.DivisionListView.as_view()),
     path('api/district-list/',views.DisrtictListView.as_view()),
     path('api/thana-list/',views.ThanaListView.as_view()),
-    path('api/thana-detail/<str:pk>/',views.ThanaDetailView.as_view()),
+    path('api/thana-detail/<str:pk>',views.ThanaDetailView.as_view()),
     path('api/market-list/', views.MarketListView.as_view()),
     path('api/market-detail/<str:pk>/',views.MarketDetailView.as_view()),
     path('api/zone-list/', views.ZoneListView.as_view()),

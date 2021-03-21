@@ -20,6 +20,7 @@ export class ThanaViewComponent implements OnInit {
     // gridApi and columnApi
     private api!: GridApi;
     private columnApi!: ColumnApi;
+    gridApi: any;
 
     // inject the athleteService
     constructor(private thanaservice: ThanaService) {
@@ -36,7 +37,28 @@ export class ThanaViewComponent implements OnInit {
                 console.log(error);
             }
         )
+
+        // this.thanaservice.updateThana().subscribe(
+        //     thanas => {
+        //         this.rowData = thanas
+        //     },
+        //     error => {
+        //         console.log(error);
+        //     }
+        // )
+
     }
+
+    onCellValueChanged(event:any) {
+        //console.log(event) to test it
+        event.data.modified = true;
+      }
+    
+      getAllData() {
+        let rowData: any[] = [];
+        this.gridApi.forEachNode((node: { data: any; }) => rowData.push(node.data));
+        return rowData;  
+      }
 
     // one grid initialisation, grap the APIs and auto resize the columns to fit the available space
     onGridReady(params: { api: GridApi; columnApi: ColumnApi; }): void {
@@ -46,6 +68,14 @@ export class ThanaViewComponent implements OnInit {
         this.api.sizeColumnsToFit();
     }
 
+    saveModifiedRows() {
+        const rowData: any[] = [];
+        this.gridApi.forEachNode((node: { data: any; }) => rowData.push(node.data));
+        const modifiedRows = rowData.filter(row => row['modified']);
+        // add API call to save modified rows
+    
+      }
+
     // create some simple column definitions
     private createColumnDefs() {
         return [
@@ -53,13 +83,14 @@ export class ThanaViewComponent implements OnInit {
            field: 'thana_code', 
            editable: true, 
            filter: true, 
-           cellEditor:"richselect",
+           
            resizable: true, 
            sortable:true },
           
           {headerName:'Thana Name',
            field: 'thana_name',
            filter: true,
+           editable:true,
            resizable: true,
            sortable: true
           }

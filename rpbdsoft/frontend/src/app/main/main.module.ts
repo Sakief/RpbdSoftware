@@ -34,8 +34,9 @@ const routes:Routes=[
   {path : 'main/division-view', component: DivisionViewComponent},
   {path : 'main/district-view', component: DistrictComponent},
   {path : 'main/thana-view', component: ThanaComponent},
-  {path:  'main/zone-list', component: ZoneComponent},
-  {path:  'main/market-view',component:MarketViewComponent},
+  {path : 'main/zone-list', component: ZoneComponent},
+  {path : 'main/market-view',component:MarketViewComponent},
+  {path : 'main/thana-crud/<str:pk>', component:ThanaCrudComponent}
 ];
 
 @NgModule({

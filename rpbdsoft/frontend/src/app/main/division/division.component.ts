@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import { DivisionService } from '../../services/division.service'; 
 import { DivisionViewComponent } from './division-view/division-view.component';
+import { AddDivisionComponent } from './add-division/add-division.component';
 
 @Component({
   selector: 'app-division',
@@ -8,9 +9,16 @@ import { DivisionViewComponent } from './division-view/division-view.component';
   styleUrls: ['./division.component.scss']
 })
 export class DivisionComponent implements OnInit {
-  [divisions: string]: any;
- 
+  
+  public add_division = false
 
+  @Input() divisions: any = [];
+
+  loadaddform()
+  {
+    this.add_division = true;
+  }
+  
   constructor(
     
     private divisionservice:DivisionService
@@ -25,6 +33,8 @@ export class DivisionComponent implements OnInit {
       },
       error => console.log(error)
     );
+    
+    // this.divisionservice.createDivision().subscribe()
   }
 
 }

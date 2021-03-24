@@ -1,7 +1,4 @@
-    
-
-export class Division {
-    division_code: string | undefined;
-    division_name: string | undefined;
-
+export interface Division {
+    division_code : string;
+    division_name : string;
 }

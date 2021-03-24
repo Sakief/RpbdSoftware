@@ -16,6 +16,10 @@ export class DivisionService {
 
   getDivisions(){
     return this.httpClient.get(this.baseUrl);
-    
   }
+
+  createDivision(){
+    // return this.httpClient.post()
+  }
+
 }

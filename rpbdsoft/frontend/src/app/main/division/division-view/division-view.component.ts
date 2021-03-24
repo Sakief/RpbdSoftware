@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
+import {Router} from '@angular/router';
 import {ColDef, ColumnApi, GridApi} from 'ag-grid-community';
 import {DivisionService} from '../../../services/division.service';
-//import {Division} from '../../../model/division';
+import {Division} from '../../../model/division';
 
 
 @Component({
@@ -10,8 +11,10 @@ import {DivisionService} from '../../../services/division.service';
     styleUrls: ['./division-view.component.scss']
 })
 export class DivisionViewComponent implements OnInit {
+        
     // row data and column definitions
     // row data and column definitions
+    
     rowData : any;
     columnDefs : any;
     
@@ -19,6 +22,9 @@ export class DivisionViewComponent implements OnInit {
     // gridApi and columnApi
     private api!: GridApi;
     private columnApi!: ColumnApi;
+    router: any;
+
+    // @Output() new createNewDivision = new EventEmitter();
 
     // inject the athleteService
     constructor(private divisionservice: DivisionService) {
@@ -27,6 +33,8 @@ export class DivisionViewComponent implements OnInit {
 
     // on init, subscribe to the athelete data
     ngOnInit() {
+
+        
         this.divisionservice.getDivisions().subscribe(
             divisions => {
                 this.rowData = divisions
@@ -35,6 +43,10 @@ export class DivisionViewComponent implements OnInit {
                 console.log(error);
             }
         )
+        
+        // newDivision(){
+        //     this.createNewDivision.emit();
+        // }
     }
 
     // one grid initialisation, grap the APIs and auto resize the columns to fit the available space
@@ -68,4 +80,9 @@ export class DivisionViewComponent implements OnInit {
             
         ]
     }
+
+    
 }
+
+
+

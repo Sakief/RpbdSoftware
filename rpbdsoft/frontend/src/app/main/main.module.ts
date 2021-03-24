@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { AgGridModule } from 'ag-grid-angular';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { DivisionService } from '../services/division.service';
 import { DistrictService } from '../services/district.service';
@@ -28,15 +29,20 @@ import { MarketPointComponent } from './market-point/market-point.component';
 import { MarketViewComponent} from './market-point/market-point-view/market-point-view.component';
 import { MarketService } from '../services/market-point.service';
 import { ThanaCrudComponent } from './thana/thana-crud/thana-crud.component';
+import { AddDivisionComponent } from './division/add-division/add-division.component'
+
+
 
 const routes:Routes=[
   {path : 'main', component: MainComponent},
-  {path : 'main/division-view', component: DivisionViewComponent},
+  {path : 'main/division', component: DivisionComponent},
   {path : 'main/district-view', component: DistrictComponent},
   {path : 'main/thana-view', component: ThanaComponent},
   {path : 'main/zone-list', component: ZoneComponent},
+  {path : 'main/add-division', component: AddDivisionComponent},
   {path : 'main/market-view',component:MarketViewComponent},
-  {path : 'main/thana-crud/<str:pk>', component:ThanaCrudComponent}
+  {path : 'main/thana-crud/<str:pk>', component:ThanaCrudComponent},
+  
 ];
 
 @NgModule({
@@ -48,17 +54,24 @@ const routes:Routes=[
     ZoneComponent,
     GridComponent,
     DivisionViewComponent, 
+    AddDivisionComponent,
     DistrictViewComponent, 
     ThanaViewComponent, 
     ZoneListComponent,
     MarketPointComponent ,
     MarketViewComponent,
-    ThanaCrudComponent
+    ThanaCrudComponent,
+    
+    
+    
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
-    AgGridModule.withComponents(GridComponent)
+    AgGridModule.withComponents(GridComponent),
+    
+    
   ],
   providers:[
     DivisionService,

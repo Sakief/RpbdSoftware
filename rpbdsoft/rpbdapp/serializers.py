@@ -7,6 +7,8 @@ class DivisionSerializer(serializers.ModelSerializer):
         model = Division
         fields=('division_code', 
                 'division_name')
+        # division_code = serializers.CharField(max_length=2,allow_blank=True)
+        # division_name = serializers.CharField(allow_blank=True)
 
 class DistrictSerializer(serializers.ModelSerializer):
 

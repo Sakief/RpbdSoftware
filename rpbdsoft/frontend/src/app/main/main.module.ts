@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AgGridModule } from 'ag-grid-angular';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { DivisionService } from '../services/division.service';
 import { DistrictService } from '../services/district.service';
@@ -67,6 +67,7 @@ const routes:Routes=[
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     AgGridModule.withComponents(GridComponent),

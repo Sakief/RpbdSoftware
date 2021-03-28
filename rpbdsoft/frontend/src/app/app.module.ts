@@ -4,7 +4,6 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AgGridModule } from 'ag-grid-angular';
 
-
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 
@@ -12,7 +11,7 @@ import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 // import { GridComponent } from './grid/grid.component';
 
-const routes : Routes = [
+const routes: Routes = [
   //{path: '', pathMatch:'full', redirectTo:'home'}
 ];
 
@@ -28,13 +27,10 @@ const routes : Routes = [
     AuthModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    AgGridModule.withComponents([GridComponent])
-
+    AgGridModule.withComponents([GridComponent]),
   ],
-  exports:[
-    RouterModule
-  ],
+  exports: [RouterModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

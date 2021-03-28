@@ -1,4 +1,4 @@
 export class Division {
-    division_code!: string;
-    division_name!: string;
+  division_code!: string;
+  division_name!: string;
 }

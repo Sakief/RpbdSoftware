@@ -1,13 +1,10 @@
-<ag-grid-angular style="width: 50%; height: 450px;"
-                 class="ag-theme-alpine"
-                 (gridReady)="onGridReady($event)"
-                 [columnDefs]="columnDefs"
-                 [rowData]="rowData"
-                 [pagination] = "true"
-                 [paginationAutoPageSize] = "true">               
+<ag-grid-angular
+  style="width: 50%; height: 450px"
+  class="ag-theme-alpine"
+  (gridReady)="onGridReady($event)"
+  [columnDefs]="columnDefs"
+  [rowData]="rowData"
+  [pagination]="true"
+  [paginationAutoPageSize]="true"
+>
 </ag-grid-angular>
-
-
-
-
-

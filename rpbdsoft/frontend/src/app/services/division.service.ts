@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from  'rxjs';
+import { Observable } from 'rxjs';
 import { Division } from '../model/division';
 import { stringify } from '@angular/compiler/src/util';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DivisionService {
+  baseUrl = 'http://127.0.0.1:8000/api/division-list/';
 
-  baseUrl = "http://127.0.0.1:8000/api/division-list/"; 
-    
   httpheaders = {
-    headers : {'Content-Type':'application/json'}
-  }
+    headers: { 'Content-Type': 'application/json' },
+  };
 
-  constructor(
-    private httpClient:HttpClient
-  ) { }
+  constructor(private httpClient: HttpClient) {}
 
-  getDivisions(){
+  getDivisions() {
     return this.httpClient.get(this.baseUrl);
   }
 
@@ -33,16 +29,8 @@ export class DivisionService {
   //   return  this.httpClient.post(this.baseUrl , payLoad, httpOptions);
   // }
 
-  createDivision(division_code:string,division_name:string){
-    const body  = JSON.stringify({division_code,division_name});
-    return this.httpClient.post(this.baseUrl,body,this.httpheaders);
+  createDivision(division_code: string, division_name: string) {
+    const body = JSON.stringify({ division_code, division_name });
+    return this.httpClient.post(this.baseUrl, body, this.httpheaders);
   }
-
 }
-
-
-  
-
-
-
-

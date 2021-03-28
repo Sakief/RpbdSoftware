@@ -1,88 +1,77 @@
-import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import {Router} from '@angular/router';
-import {ColDef, ColumnApi, GridApi} from 'ag-grid-community';
-import {DivisionService} from '../../../services/division.service';
-import {Division} from '../../../model/division';
-
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { ColDef, ColumnApi, GridApi } from 'ag-grid-community';
+import { DivisionService } from '../../../services/division.service';
+import { Division } from '../../../model/division';
 
 @Component({
-    selector: 'app-division-view',
-    templateUrl: './division-view.component.html',
-    styleUrls: ['./division-view.component.scss']
+  selector: 'app-division-view',
+  templateUrl: './division-view.component.html',
+  styleUrls: ['./division-view.component.scss'],
 })
 export class DivisionViewComponent implements OnInit {
-        
-    // row data and column definitions
-    // row data and column definitions
-    
-    rowData : any;
-    columnDefs : any;
-    
+  // row data and column definitions
+  // row data and column definitions
 
-    // gridApi and columnApi
-    private api!: GridApi;
-    private columnApi!: ColumnApi;
-    router: any;
+  rowData: any;
+  columnDefs: any;
 
-    // @Output() new createNewDivision = new EventEmitter();
+  // gridApi and columnApi
+  private api!: GridApi;
+  private columnApi!: ColumnApi;
+  router: any;
 
-    // inject the athleteService
-    constructor(private divisionservice: DivisionService) {
-        this.columnDefs = this.createColumnDefs();
-    }
+  // @Output() new createNewDivision = new EventEmitter();
 
-    // on init, subscribe to the athelete data
-    ngOnInit() {
+  // inject the athleteService
+  constructor(private divisionservice: DivisionService) {
+    this.columnDefs = this.createColumnDefs();
+  }
 
-        
-        this.divisionservice.getDivisions().subscribe(
-            divisions => {
-                this.rowData = divisions
-            },
-            error => {
-                console.log(error);
-            }
-        )
-        
-        // newDivision(){
-        //     this.createNewDivision.emit();
-        // }
-    }
+  // on init, subscribe to the athelete data
+  ngOnInit() {
+    this.divisionservice.getDivisions().subscribe(
+      (divisions) => {
+        this.rowData = divisions;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
-    // one grid initialisation, grap the APIs and auto resize the columns to fit the available space
-    onGridReady(params: { api: GridApi; columnApi: ColumnApi; }): void {
-        this.api = params.api;
-        this.columnApi = params.columnApi;
+    // newDivision(){
+    //     this.createNewDivision.emit();
+    // }
+  }
 
-        this.api.sizeColumnsToFit();
-    }
+  // one grid initialisation, grap the APIs and auto resize the columns to fit the available space
+  onGridReady(params: { api: GridApi; columnApi: ColumnApi }): void {
+    this.api = params.api;
+    this.columnApi = params.columnApi;
 
-    // create some simple column definitions
-    private createColumnDefs() {
-        return [
-          {
-            headerName:"Division Code" ,
-            field: 'division_code', 
-            editable: false, 
-            filter: true, 
-            resizable: true, 
-            sortable:true 
-          },
-          
-          {
-            headerName:'Division Name',
-            field: 'division_name',
-            filter: true,
-            resizable: true,
-            editable:true,
-            sortable: true
-          }
-            
-        ]
-    }
+    this.api.sizeColumnsToFit();
+  }
 
-    
+  // create some simple column definitions
+  private createColumnDefs() {
+    return [
+      {
+        headerName: 'Division Code',
+        field: 'division_code',
+        editable: false,
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
+
+      {
+        headerName: 'Division Name',
+        field: 'division_name',
+        filter: true,
+        resizable: true,
+        editable: true,
+        sortable: true,
+      },
+    ];
+  }
 }
-
-
-

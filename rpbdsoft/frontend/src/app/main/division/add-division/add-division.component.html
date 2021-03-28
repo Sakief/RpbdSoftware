@@ -1,16 +1,13 @@
-<form  [formGroup]="divisionform" (ngSubmit)="addDivision()">
-   
+<form [formGroup]="divisionform" (ngSubmit)="addDivision()">
+  <label
+    >Division Code <input type="text" formControlName="division_code" /><br />
+  </label>
 
-    <label>Division Code
-    <input type = "text" formControlName="division_code"/><br>
-    </label>
+  <label
+    >Division Name <input type="text" formControlName="division_name" /><br />
+  </label>
 
-    <label>Division Name
-    <input type = "text" formControlName="division_name"/><br>
-    </label>
-
-    <button type="submit">Submit</button>
-
+  <button type="submit">Submit</button>
 </form>
 
-{{divisionform.value | json}}
+{{ divisionform.value | json }}

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DistrictComponent } from './district.component';
+import { AddDistrictComponent } from './add-district.component';
 
-describe('DistrictComponent', () => {
-  let component: DistrictComponent;
-  let fixture: ComponentFixture<DistrictComponent>;
+describe('AddDistrictComponent', () => {
+  let component: AddDistrictComponent;
+  let fixture: ComponentFixture<AddDistrictComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DistrictComponent ]
+      declarations: [ AddDistrictComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DistrictComponent);
+    fixture = TestBed.createComponent(AddDistrictComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

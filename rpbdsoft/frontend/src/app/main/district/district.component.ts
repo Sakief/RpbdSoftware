@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DistrictService } from '../../services/district.service';
 import { DistrictViewComponent } from './district-view/district-view.component';
 
@@ -9,6 +9,15 @@ import { DistrictViewComponent } from './district-view/district-view.component';
 })
 export class DistrictComponent implements OnInit {
   [districts: string]: any;
+
+  public add_district = false
+
+  @Input() districts: any = [];
+
+  loadaddform()
+  {
+    this.add_district = true;
+  }
 
   constructor(private districtservice: DistrictService) {}
 

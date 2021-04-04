@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { DivisionService } from '../../../services/division.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-division',
@@ -19,7 +20,7 @@ export class AddDivisionComponent implements OnInit {
     division_name: new FormControl(''),
   });
 
-  constructor(private divisionservice: DivisionService) {}
+  constructor(private divisionservice: DivisionService, private router:Router) {}
 
   ngOnInit() {}
 
@@ -28,56 +29,16 @@ export class AddDivisionComponent implements OnInit {
     this.divisionservice
       .createDivision(
         this.divisionform.value.division_code,
-        this.divisionform.value.division_name
+        this.divisionform.value.division_name,
       )
       .subscribe(
         (result) => console.log(result),
         (error) => console.log(error)
       );
+     
   };
+ 
+
 }
 
-// division_code : any;
-// division_name : any;
 
-// addDivisionForm = new FormGroup(
-//   this.division_code = new FormControl(''),
-//   DivisionName : new FormControl('')
-// );
-
-// }
-
-// [x: string]: any;
-// // addDivisionForm:any;
-// // form!: FormGroup
-// // payload = '';
-
-// // divisions = {
-// //   division_code: '',
-// //   division_name: '',
-// // };
-// submitted = false;
-
-// FormGroup = this.addDivisionForm;
-// // add_division = [];
-// // division_code!: string;
-// // division_name!: string
-
-// // division_code =  new FormControl('');
-// // division_name = new FormControl('');
-
-// constructor(private divisionservice:DivisionService) { }
-
-// ngOnInit(): void {
-// }
-
-// onSubmit() {
-//   // this.payload = JSON.stringify(this.divisions);
-
-//   this.divisionservice.addDivision(this.payload)
-//   .subscribe(
-//     (response) => console.log(response),
-//     (error) => console.log(error)
-//   );
-
-// }

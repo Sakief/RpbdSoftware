@@ -1,0 +1,13 @@
+<form [formGroup]="districtform" (ngSubmit)="addDistrict()">
+  <label
+    >District Code <input type="text" formControlName="district_code" /><br />
+  </label>
+
+  <label
+    >District Name <input type="text" formControlName="district_name" /><br />
+  </label>
+
+  <button type="submit">Submit</button>
+</form>
+
+{{ districtform.value | json }}

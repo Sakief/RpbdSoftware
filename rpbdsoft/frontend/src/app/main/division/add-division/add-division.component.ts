@@ -20,7 +20,10 @@ export class AddDivisionComponent implements OnInit {
     division_name: new FormControl(''),
   });
 
-  constructor(private divisionservice: DivisionService, private router:Router) {}
+  constructor(
+    private divisionservice: DivisionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -29,16 +32,11 @@ export class AddDivisionComponent implements OnInit {
     this.divisionservice
       .createDivision(
         this.divisionform.value.division_code,
-        this.divisionform.value.division_name,
+        this.divisionform.value.division_name
       )
       .subscribe(
         (result) => console.log(result),
         (error) => console.log(error)
       );
-     
   };
- 
-
 }
-
-

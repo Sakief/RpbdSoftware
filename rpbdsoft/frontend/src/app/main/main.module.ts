@@ -25,9 +25,9 @@ import { ZoneService } from '../services/zone.service';
 import { MarketPointComponent } from './market-point/market-point.component';
 import { MarketViewComponent } from './market-point/market-point-view/market-point-view.component';
 import { MarketService } from '../services/market-point.service';
-import { ThanaCrudComponent } from './thana/thana-crud/thana-crud.component';
 import { AddDivisionComponent } from './division/add-division/add-division.component';
 import { AddDistrictComponent } from './district/add-district/add-district.component';
+import { AddThanaComponent } from './thana/add-thana/add-thana.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'main/zone-list', component: ZoneComponent },
   { path: 'main/add-division', component: AddDivisionComponent },
   { path: 'main/market-view', component: MarketViewComponent },
-  { path: 'main/thana-crud/<str:pk>', component: ThanaCrudComponent },
+  
 ];
 
 @NgModule({
@@ -55,8 +55,8 @@ const routes: Routes = [
     ZoneListComponent,
     MarketPointComponent,
     MarketViewComponent,
-    ThanaCrudComponent,
     AddDistrictComponent,
+    AddThanaComponent,
   ],
   imports: [
     CommonModule,

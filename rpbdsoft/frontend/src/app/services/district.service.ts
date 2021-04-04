@@ -10,10 +10,8 @@ export class DistrictService {
   baseUrl = 'http://127.0.0.1:8000/api/district-list/';
 
   httpheaders = {
-    headers : { 'Content-Type' : 'application/json'},
-  }
-
-
+    headers: { 'Content-Type': 'application/json' },
+  };
 
   constructor(private httpClient: HttpClient) {}
 
@@ -23,9 +21,6 @@ export class DistrictService {
 
   createDistrict(district_code: string, district_name: string) {
     const body = JSON.stringify({ district_code, district_name });
-    return this.httpClient.post(this.baseUrl, body, this.httpheaders)
-    
-}
-
-
+    return this.httpClient.post(this.baseUrl, body, this.httpheaders);
+  }
 }

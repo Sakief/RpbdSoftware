@@ -1,0 +1,13 @@
+<form [formGroup]="thanaform" (ngSubmit)="addThana()">
+  <label
+    >Thana Code <input type="text" formControlName="thana_code" /><br />
+  </label>
+
+  <label
+    >Thana Name <input type="text" formControlName="thana_name" /><br />
+  </label>
+
+  <button type="submit">Submit</button>
+</form>
+
+{{ thanaform.value | json }}

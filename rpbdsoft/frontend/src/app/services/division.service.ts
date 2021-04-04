@@ -21,10 +21,8 @@ export class DivisionService {
     return this.httpClient.get(this.baseUrl);
   }
 
-
   createDivision(division_code: string, division_name: string) {
     const body = JSON.stringify({ division_code, division_name });
-    return this.httpClient.post(this.baseUrl, body, this.httpheaders)
-    
+    return this.httpClient.post(this.baseUrl, body, this.httpheaders);
   }
 }

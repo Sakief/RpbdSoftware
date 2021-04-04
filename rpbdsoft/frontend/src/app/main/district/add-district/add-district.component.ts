@@ -9,7 +9,6 @@ import {
 import { DistrictService } from '../../../services/district.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-add-district',
   templateUrl: './add-district.component.html',
@@ -21,7 +20,10 @@ export class AddDistrictComponent implements OnInit {
     district_name: new FormControl(''),
   });
 
-  constructor(private districtservice: DistrictService, private router:Router) {}
+  constructor(
+    private districtservice: DistrictService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -30,16 +32,11 @@ export class AddDistrictComponent implements OnInit {
     this.districtservice
       .createDistrict(
         this.districtform.value.district_code,
-        this.districtform.value.district_name,
+        this.districtform.value.district_name
       )
       .subscribe(
         (result) => console.log(result),
         (error) => console.log(error)
       );
-     
   };
- 
-
 }
-
-

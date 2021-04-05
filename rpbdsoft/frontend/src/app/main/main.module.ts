@@ -28,6 +28,7 @@ import { MarketService } from '../services/market-point.service';
 import { AddDivisionComponent } from './division/add-division/add-division.component';
 import { AddDistrictComponent } from './district/add-district/add-district.component';
 import { AddThanaComponent } from './thana/add-thana/add-thana.component';
+import { AddZoneComponent } from './zone/add-zone/add-zone.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -57,6 +58,7 @@ const routes: Routes = [
     MarketViewComponent,
     AddDistrictComponent,
     AddThanaComponent,
+    AddZoneComponent,
   ],
   imports: [
     CommonModule,

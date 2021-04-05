@@ -20,10 +20,7 @@ export class AddThanaComponent implements OnInit {
     thana_name: new FormControl(''),
   });
 
-  constructor(
-    private thanaservice: ThanaService,
-    private router: Router
-  ) {}
+  constructor(private thanaservice: ThanaService, private router: Router) {}
 
   ngOnInit() {}
 

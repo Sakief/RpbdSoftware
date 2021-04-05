@@ -1,40 +1,40 @@
-import { Component, OnInit, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import { DivisionService } from '../../services/division.service'; 
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { DivisionService } from '../../services/division.service';
 import { DivisionViewComponent } from './division-view/division-view.component';
 import { AddDivisionComponent } from './add-division/add-division.component';
 
 @Component({
   selector: 'app-division',
   templateUrl: './division.component.html',
-  styleUrls: ['./division.component.scss']
+  styleUrls: ['./division.component.scss'],
 })
 export class DivisionComponent implements OnInit {
-  
-  public add_division = false
+  public add_division = false;
 
   @Input() divisions: any = [];
 
-  loadaddform()
-  {
+  loadaddform() {
     this.add_division = true;
   }
-  
-  constructor(
-    
-    private divisionservice:DivisionService
-    ){}
 
-  ngOnInit():void{
-    
+  constructor(private divisionservice: DivisionService) {}
+
+  ngOnInit(): void {
     this.divisionservice.getDivisions().subscribe(
-      data => {
-      this.divisions = data;
-      console.log(data);
+      (data) => {
+        this.divisions = data;
+        console.log(data);
       },
-      error => console.log(error)
+      (error) => console.log(error)
     );
-    
+
     // this.divisionservice.createDivision().subscribe()
   }
-
 }

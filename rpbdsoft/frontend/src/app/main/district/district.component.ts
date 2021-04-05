@@ -10,12 +10,11 @@ import { DistrictViewComponent } from './district-view/district-view.component';
 export class DistrictComponent implements OnInit {
   [districts: string]: any;
 
-  public add_district = false
+  public add_district = false;
 
   @Input() districts: any = [];
 
-  loadaddform()
-  {
+  loadaddform() {
     this.add_district = true;
   }
 

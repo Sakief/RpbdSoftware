@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
 })
 export class AddMarketComponent implements OnInit {
   marketform = new FormGroup({
-    market_code: new FormControl(''),
-    market_name: new FormControl(''),
+    market_code: new FormControl('',[Validators.required, Validators.minLength(10)]),
+    market_name: new FormControl('',Validators.required),
   });
 
   constructor(private marketservice: MarketService, private router: Router) {}

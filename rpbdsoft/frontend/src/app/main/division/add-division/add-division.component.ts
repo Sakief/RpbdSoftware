@@ -9,14 +9,18 @@ import {
 import { DivisionService } from '../../../services/division.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-add-division',
   templateUrl: './add-division.component.html',
   styleUrls: ['./add-division.component.scss'],
 })
 export class AddDivisionComponent implements OnInit {
+  
+  submitted  = false
+
   divisionform = new FormGroup({
-    division_code: new FormControl(''),
+    division_code: new FormControl('', Validators.required),
     division_name: new FormControl(''),
   });
 
@@ -26,6 +30,8 @@ export class AddDivisionComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  
 
   addDivision = () => {
     console.log(this.divisionform.value);
@@ -39,4 +45,16 @@ export class AddDivisionComponent implements OnInit {
         (error) => console.log(error)
       );
   };
+
+  get f(){
+    return this.divisionform.controls;
+  }
+
+  onSubmit(){
+    this.submitted = true;
+
+    if (this.divisionform.invalid) {
+      return;
+  }
+  }
 }

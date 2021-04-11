@@ -30,6 +30,7 @@ import { AddDistrictComponent } from './district/add-district/add-district.compo
 import { AddThanaComponent } from './thana/add-thana/add-thana.component';
 import { AddZoneComponent } from './zone/add-zone/add-zone.component';
 import { AddMarketComponent } from './market-point/add-market/add-market.component';
+import { UpdateZoneComponent } from './zone/update-zone/update-zone.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'main/zone-list', component: ZoneComponent },
   { path: 'main/add-division', component: AddDivisionComponent },
   { path: 'main/market-point-view', component: MarketPointComponent },
+  { path: 'main/update-zone', component: UpdateZoneComponent},
   
 ];
 
@@ -61,6 +63,7 @@ const routes: Routes = [
     AddThanaComponent,
     AddZoneComponent,
     AddMarketComponent,
+    UpdateZoneComponent,
   ],
   imports: [
     CommonModule,

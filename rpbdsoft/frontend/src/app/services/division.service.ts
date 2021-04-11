@@ -10,6 +10,7 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class DivisionService {
   baseUrl = 'http://127.0.0.1:8000/api/division-list/';
+  
 
   httpheaders = {
     headers: { 'Content-Type': 'application/json' },
@@ -25,4 +26,5 @@ export class DivisionService {
     const body = JSON.stringify({ division_code, division_name });
     return this.httpClient.post(this.baseUrl, body, this.httpheaders);
   }
+
 }

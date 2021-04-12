@@ -83,6 +83,7 @@ class Profile(models.Model):
     zone_code = models.ForeignKey(Zone, on_delete=models.CASCADE)
     thana_code = models.ForeignKey(Thana, on_delete=models.CASCADE)
     district_code = models.ForeignKey(District, on_delete=models.CASCADE)
+    # division_code = models.ForeignKey(Division, on_delete=models.CASCADE)
     outlet_type = models.CharField(verbose_name="Outlet Type", max_length=30)
     manager_name = models.CharField(verbose_name="Manager/Incharge Name", max_length=50)
     respondent_designation = models.CharField(

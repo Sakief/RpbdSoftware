@@ -4,17 +4,17 @@ from rpbdapp import views
 # router =  routers.DefaultRouters()
 # router.register('')
 
-urlpatterns=[
+urlpatterns = [
     # path('division-list/',views.division_list,name="division-list"),
-    path('api/division-list/',views.DivisionListView.as_view()),
-    path('api/district-list/',views.DisrtictListView.as_view()),
-    path('api/thana-list/',views.ThanaListView.as_view()),
-    path('api/thana-detail/<str:pk>',views.ThanaDetailView.as_view()),
-    path('api/market-list/', views.MarketListView.as_view()),
-    path('api/market-detail/<str:pk>/',views.MarketDetailView.as_view()),
-    path('api/zone-list/', views.ZoneListView.as_view()),
-    path('api/zone-detail/<str:pk>/',views.ZoneDetailView.as_view()),
-
+    path("api/division-list/", views.DivisionListView.as_view()),
+    path("api/district-list/", views.DisrtictListView.as_view()),
+    path("api/thana-list/", views.ThanaListView.as_view()),
+    path("api/thana-detail/<str:pk>", views.ThanaDetailView.as_view()),
+    path("api/market-list/", views.MarketListView.as_view()),
+    path("api/market-detail/<str:pk>/", views.MarketDetailView.as_view()),
+    path("api/zone-list/", views.ZoneListView.as_view()),
+    path("api/zone-detail/<str:pk>/", views.ZoneDetailView.as_view()),
+    path("api/profile-grid/", views.ProfileGridView.as_view())
     # path('division-detail/<str:pk>/',views.division_detail,name="division-detail"),
     # path('division-list-search/', views.DivisionListView.as_view()),
     # path('division-create/',views.division_create,name="division-create"),
@@ -35,7 +35,4 @@ urlpatterns=[
     # path('market-update/<pk:str>/',views.market_update,name="market=update"),
     # path('market-delete/<pk:str>/',views.market_delete,name="market-delete"),
     # path('thana-detail-view/', views.ThanaDetailView.as_view()),
-    
-    
 ]
-

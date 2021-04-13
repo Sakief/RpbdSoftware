@@ -31,6 +31,7 @@ import { AddThanaComponent } from './thana/add-thana/add-thana.component';
 import { AddZoneComponent } from './zone/add-zone/add-zone.component';
 import { AddMarketComponent } from './market-point/add-market/add-market.component';
 import { UpdateZoneComponent } from './zone/update-zone/update-zone.component';
+import { ProfileGridComponent } from './profile-grid/profile-grid.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -64,6 +65,7 @@ const routes: Routes = [
     AddZoneComponent,
     AddMarketComponent,
     UpdateZoneComponent,
+    ProfileGridComponent,
   ],
   imports: [
     CommonModule,

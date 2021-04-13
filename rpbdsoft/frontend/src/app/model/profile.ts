@@ -1,0 +1,32 @@
+export class Profile {
+  outlet_id!: string;
+  owner_name!: string;
+  holding_no!: string;
+  road_name!: string;
+  bloack_no!: string;
+  village!: string;
+  union!: string;
+  post_office!: string;
+  market_code!: string;
+  zone_code!: string;
+  thana_code!: string;
+  district_code!: string;
+  outlet_type!: string;
+  manager_name!: string;
+  respondent_designation!: string;
+  contact_no1!: string;
+  contact_no2!: string;
+  contact_no3!: string;
+  total_staff!: number;
+  outlet_landmark!: string;
+  gps_lat!: DoubleRange;
+  gps_long!: DoubleRange;
+  storage_capacity!: number;
+  front_length!: number;
+  front_width!: number;
+  weekly_holiday!: number;
+  nid!: string;
+  survey_by!: string;
+  entry_by!: string;
+  visit_date!: Date;
+}

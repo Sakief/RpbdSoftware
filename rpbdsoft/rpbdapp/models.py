@@ -45,7 +45,7 @@ class MarketPoint(models.Model):
     market_code = models.CharField(
         verbose_name="Market Point Code", max_length=10, primary_key=True
     )
-    market_name = models.CharField(verbose_name="Market Point Name", max_length=20)
+    market_name = models.CharField(verbose_name="Market Point Name", max_length=60)
 
     def __str__(self):
         return self.market_code

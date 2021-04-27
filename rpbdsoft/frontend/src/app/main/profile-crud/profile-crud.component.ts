@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -13,7 +14,8 @@ export class ProfileCrudComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private profileservice: ProfileService
+    private profileservice: ProfileService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,6 +61,10 @@ export class ProfileCrudComponent implements OnInit {
         });
       }
     });
+  }
+
+  redirect() {
+    this.router.navigate(['/main']);
   }
 
   addProfileForm() {

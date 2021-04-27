@@ -10,6 +10,7 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class ProfileService {
   baseUrl = 'http://127.0.0.1:8000/api/profile-grid/';
+  updateUrl = 'http://127.0.0.1:8000/api/profile-crud/';
 
   httpheaders = {
     headers: { 'Content-Type': 'application/json' },
@@ -19,5 +20,9 @@ export class ProfileService {
 
   getProfile() {
     return this.httpClient.get(this.baseUrl);
+  }
+
+  createProfile(formData: any) {
+    return this.httpClient.post(this.updateUrl, formData);
   }
 }

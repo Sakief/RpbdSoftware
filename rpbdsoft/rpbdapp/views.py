@@ -205,3 +205,25 @@ class ProfileGridView(APIView):
         serializer = ProfileSerializer(profiles, many=True)
         response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
+
+
+class ProfileCrudView(APIView):
+    def get_object(self, pk):
+        try:
+            return Profile.objects.get(pk=pk)
+        except Profile.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles, many=True)
+        response = serializer.data
+        return Response(response, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=["POST"])
+    def post(self, request, format=None):
+        serializer = ProfileSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

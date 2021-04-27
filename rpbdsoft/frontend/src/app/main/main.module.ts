@@ -32,6 +32,7 @@ import { AddZoneComponent } from './zone/add-zone/add-zone.component';
 import { AddMarketComponent } from './market-point/add-market/add-market.component';
 import { UpdateZoneComponent } from './zone/update-zone/update-zone.component';
 import { ProfileGridComponent } from './profile-grid/profile-grid.component';
+import { ProfileCrudComponent } from './profile-crud/profile-crud.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -41,8 +42,8 @@ const routes: Routes = [
   { path: 'main/zone-list', component: ZoneComponent },
   { path: 'main/add-division', component: AddDivisionComponent },
   { path: 'main/market-point-view', component: MarketPointComponent },
-  { path: 'main/update-zone', component: UpdateZoneComponent},
-  
+  { path: 'main/update-zone', component: UpdateZoneComponent },
+  { path: 'main/profile-grid', component: ProfileGridComponent },
 ];
 
 @NgModule({
@@ -66,6 +67,7 @@ const routes: Routes = [
     AddMarketComponent,
     UpdateZoneComponent,
     ProfileGridComponent,
+    ProfileCrudComponent,
   ],
   imports: [
     CommonModule,

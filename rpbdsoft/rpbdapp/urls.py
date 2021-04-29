@@ -16,6 +16,7 @@ urlpatterns = [
     path("api/zone-detail/<str:pk>/", views.ZoneDetailView.as_view()),
     path("api/profile-grid/", views.ProfileGridView.as_view()),
     path("api/profile-crud/", views.ProfileCrudView.as_view()),
+    path("api/profile-update/<str:pk>", views.PorfileUpdateView.as_view())
     # path('division-detail/<str:pk>/',views.division_detail,name="division-detail"),
     # path('division-list-search/', views.DivisionListView.as_view()),
     # path('division-create/',views.division_create,name="division-create"),

@@ -10,7 +10,8 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class ProfileService {
   baseUrl = 'http://127.0.0.1:8000/api/profile-grid/';
-  updateUrl = 'http://127.0.0.1:8000/api/profile-crud/';
+  createUrl = 'http://127.0.0.1:8000/api/profile-crud/';
+  updateUrl = 'http://127.0.0.1:8000/api/profile-update/';
 
   httpheaders = {
     headers: { 'Content-Type': 'application/json' },
@@ -23,6 +24,12 @@ export class ProfileService {
   }
 
   createProfile(formData: any) {
-    return this.httpClient.post(this.updateUrl, formData);
+    return this.httpClient.post(this.createUrl, formData);
+  }
+  updateProfile(formData: any) {
+    return this.httpClient.put(this.updateUrl + formData.outlet_id, formData);
+  }
+  deleteProfile(outlet_id: any) {
+    return this.httpClient.delete(this.updateUrl + outlet_id);
   }
 }

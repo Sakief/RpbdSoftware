@@ -106,6 +106,19 @@ export class ProfileCrudComponent implements OnInit {
   }
 
   profileSubmit(fg: FormGroup) {
-    this.profileservice.createProfile(fg.value).subscribe((res: any) => {});
+    if (fg.value.outlet_id == 0)
+      this.profileservice.createProfile(fg.value).subscribe((res: any) => {
+        fg.patchValue({ outlet_id: res.outlet_id });
+      });
+    else
+      this.profileservice.updateProfile(fg.value).subscribe((res: any) => {
+        fg.patchValue({ outlet_id: res.outlet_id });
+      });
+  }
+
+  onDelete(outlet_id: any, i: any) {
+    this.profileservice.deleteProfile(outlet_id).subscribe((res) => {
+      this.profileForms.removeAt(i);
+    });
   }
 }

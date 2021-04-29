@@ -33,7 +33,11 @@
       <div class="td">Entry By</div>
       <div class="td">Vist Date</div>
       <div class="td">
-        <button class="btn btn-outline-success" (click)="addProfileForm()">
+        <button
+          class="btn btn-outline-success"
+          (click)="addProfileForm()"
+          style="width: 180px"
+        >
           <i class="fa fa-plus"></i> New Profile
         </button>
       </div>
@@ -43,7 +47,7 @@
     <form
       class="tr"
       [formGroup]="fg"
-      *ngFor="let fg of profileForms.controls"
+      *ngFor="let fg of profileForms.controls; let i = index"
       (submit)="profileSubmit(fg)"
     >
       <div class="td">
@@ -276,6 +280,12 @@
         >
           <i class="far fa-save fa-lg"></i>
           {{ fg.get("outlet_id").value == 0 ? "Create" : "Update" }}
+        </button>
+        <button
+          class="btn btn-light ml-1"
+          (click)="onDelete(fg.get('outlet_id').value, i)"
+        >
+          <i class="far fa-trash-alt fa-lg text-danger"></i>
         </button>
       </div>
     </form>

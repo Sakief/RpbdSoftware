@@ -98,7 +98,7 @@ class Profile(models.Model):
         verbose_name="Post Office", max_length=20, blank=True, null=True
     )
     market_code = models.ForeignKey(MarketPoint, on_delete=models.CASCADE)
-    zone_code = models.ForeignKey(Zone, on_delete=models.CASCADE)
+    zone_code = models.ForeignKey("Zone", on_delete=models.CASCADE)
     thana_code = models.ForeignKey(Thana, on_delete=models.CASCADE)
     district_code = models.ForeignKey(District, on_delete=models.CASCADE)
     outlet_type = models.CharField(

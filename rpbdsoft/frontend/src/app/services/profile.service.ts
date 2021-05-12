@@ -10,7 +10,7 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class ProfileService {
   baseUrl = 'http://127.0.0.1:8000/api/profile-grid/';
-  createUrl = 'http://127.0.0.1:8000/api/profile-crud/';
+  createUrl = 'http://127.0.0.1:8000/api/profile-create/';
   updateUrl = 'http://127.0.0.1:8000/api/profile-update/';
   deleteUrl = 'http://127.0.0.1:8000/api/profile-delete/';
 

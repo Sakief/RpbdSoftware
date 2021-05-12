@@ -1,7 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, Http404
 from rest_framework.decorators import api_view, action
-from rpbdapp.models import Division, District, Thana, MarketPoint, Zone, Profile, Brand
+from rpbdapp.models import (
+    Division,
+    District,
+    Thana,
+    MarketPoint,
+    Zone,
+    Profile,
+    Brand,
+)
 from rpbdapp.serializers import (
     DivisionSerializer,
     DistrictSerializer,
@@ -135,7 +143,7 @@ class MarketCreateView(APIView):
 
     def get(self, request, format=None):
         markets = MarketPoint.objects.all()
-        serializer = MarketPointSerializer(zones, many=True)
+        serializer = MarketPointSerializer(self.zones, many=True)
         response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
 
@@ -157,7 +165,7 @@ class MarketUpdateView(APIView):
 
     def get(self, request, pk):
         markets = self.get_object(pk)
-        serializer = MarketPointSerializer(zones)
+        serializer = MarketPointSerializer(self.zones)
         response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
 
@@ -273,7 +281,29 @@ class ProfileGridView(APIView):
         return Response(response, status=status.HTTP_200_OK)
 
 
-class ProfileCrudView(APIView):
+# class ProfileCrudView(APIView):
+#     def get_object(self, pk):
+#         try:
+#             return Profile.objects.get(pk=pk)
+#         except Profile.DoesNotExist:
+#             raise Http404
+
+#     def get(self, request, format=None):
+#         profiles = Profile.objects.all()
+#         serializer = ProfileSerializer(profiles, many=True)
+#         response = serializer.data
+#         return Response(response, status=status.HTTP_200_OK)
+
+#     @action(detail=True, methods=["POST"])
+#     def post(self, request, format=None):
+#         serializer = ProfileSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileCreateView(APIView):
     def get_object(self, pk):
         try:
             return Profile.objects.get(pk=pk)
@@ -377,7 +407,7 @@ class BrandUpdateView(APIView):
 
     def get(self, request, pk):
         brands = self.get_object(pk)
-        serializer = BrandSerializer(profiles)
+        serializer = BrandSerializer(self.profiles)
         response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
 

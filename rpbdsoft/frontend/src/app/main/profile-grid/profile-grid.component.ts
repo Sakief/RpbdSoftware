@@ -60,6 +60,14 @@ export class ProfileGridComponent implements OnInit {
         resizable: true,
         sortable: true,
       },
+      {
+        headerName: 'Outlet Type ID',
+        field: 'outlet_type_id',
+        editable: true,
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
 
       {
         headerName: 'Outlet Name',

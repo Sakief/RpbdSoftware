@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
+
 // import { GridComponent } from './grid/grid.component';
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+
     // GridComponent
   ],
   imports: [

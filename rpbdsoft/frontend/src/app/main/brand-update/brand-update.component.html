@@ -1,0 +1,60 @@
+<div class="grid-Table">
+  <div class="thead">
+    <div class="tr">
+      <div class="td">Brand Code</div>
+      <div class="td">Brand Name</div>
+      <div class="td">Company Name</div>
+
+      <div class="td">
+        action
+        <span *ngIf="notification" class="elementToFadeInAndOut">
+          <i class="fas fa-check-circle {{ notification.class }}"></i>
+          {{ notification.message }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="tbody">
+    <form
+      class="tr"
+      [formGroup]="fg"
+      *ngFor="let fg of brandForms.controls; let i = index"
+      (submit)="brandUpdate(fg)"
+    >
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="brand_code"
+          style="width: 130px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="brand_name"
+          style="width: 380px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="company_name"
+          style="width: 300px"
+        />
+      </div>
+
+      <div class="td">
+        <button type="submit" class="btn">
+          <i class="far fa-save fa-lg"></i>
+          Update
+        </button>
+        <button
+          class="btn btn-light ml-1"
+          (click)="onDelete(fg.get('brand_code').value, i)"
+        >
+          <i class="far fa-trash-alt fa-lg text-danger"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

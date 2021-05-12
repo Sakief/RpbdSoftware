@@ -19,31 +19,44 @@ import { DivisionViewComponent } from './division/division-view/division-view.co
 import { DistrictViewComponent } from './district/district-view/district-view.component';
 
 import { ThanaViewComponent } from './thana/thana-view/thana-view.component';
-import { ZoneComponent } from './zone/zone.component';
-import { ZoneListComponent } from './zone/zone-list/zone-list.component';
+
 import { ZoneService } from '../services/zone.service';
-import { MarketPointComponent } from './market-point/market-point.component';
-import { MarketViewComponent } from './market-point/market-point-view/market-point-view.component';
+
 import { MarketService } from '../services/market-point.service';
 import { AddDivisionComponent } from './division/add-division/add-division.component';
 import { AddDistrictComponent } from './district/add-district/add-district.component';
 import { AddThanaComponent } from './thana/add-thana/add-thana.component';
-import { AddZoneComponent } from './zone/add-zone/add-zone.component';
-import { AddMarketComponent } from './market-point/add-market/add-market.component';
-import { UpdateZoneComponent } from './zone/update-zone/update-zone.component';
+
 import { ProfileGridComponent } from './profile-grid/profile-grid.component';
 import { ProfileCrudComponent } from './profile-crud/profile-crud.component';
+import { BrandGridComponent } from './brand-grid/brand-grid.component';
+import { BrandCreateComponent } from './brand-create/brand-create.component';
+import { BrandUpdateComponent } from './brand-update/brand-update.component';
+import { ZoneGridComponent } from './zone-grid/zone-grid.component';
+import { ZoneCreateComponent } from './zone-create/zone-create.component';
+import { ZoneUpdateComponent } from './zone-update/zone-update.component';
+import { MarketGridComponent } from './market-grid/market-grid.component';
+import { MarketCreateComponent } from './market-create/market-create.component';
+import { MarketUpdateComponent } from './market-update/market-update.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'main/division', component: DivisionComponent },
   { path: 'main/district-view', component: DistrictComponent },
   { path: 'main/thana-view', component: ThanaComponent },
-  { path: 'main/zone-list', component: ZoneComponent },
+
   { path: 'main/add-division', component: AddDivisionComponent },
-  { path: 'main/market-point-view', component: MarketPointComponent },
-  { path: 'main/update-zone', component: UpdateZoneComponent },
+
   { path: 'main/profile-grid', component: ProfileGridComponent },
+  { path: 'main/brand-grid', component: BrandGridComponent },
+  { path: 'main/brand-create', component: BrandCreateComponent },
+  { path: 'main/brand-update', component: BrandUpdateComponent },
+  { path: 'main/zone-grid', component: ZoneGridComponent },
+  { path: 'main/zone-create', component: ZoneCreateComponent },
+  { path: 'main/zone-update', component: ZoneUpdateComponent },
+  { path: 'main/market-grid', component: MarketGridComponent },
+  { path: 'main/market-create', component: MarketCreateComponent },
+  { path: 'main/market-update', component: MarketUpdateComponent },
 ];
 
 @NgModule({
@@ -52,22 +65,27 @@ const routes: Routes = [
     DistrictComponent,
     DivisionComponent,
     ThanaComponent,
-    ZoneComponent,
+
     GridComponent,
     DivisionViewComponent,
     AddDivisionComponent,
     DistrictViewComponent,
     ThanaViewComponent,
-    ZoneListComponent,
-    MarketPointComponent,
-    MarketViewComponent,
+
     AddDistrictComponent,
     AddThanaComponent,
-    AddZoneComponent,
-    AddMarketComponent,
-    UpdateZoneComponent,
+
     ProfileGridComponent,
     ProfileCrudComponent,
+    BrandGridComponent,
+    BrandCreateComponent,
+    BrandUpdateComponent,
+    ZoneGridComponent,
+    ZoneCreateComponent,
+    ZoneUpdateComponent,
+    MarketGridComponent,
+    MarketCreateComponent,
+    MarketUpdateComponent,
   ],
   imports: [
     CommonModule,

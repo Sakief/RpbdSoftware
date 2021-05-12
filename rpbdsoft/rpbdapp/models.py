@@ -68,14 +68,18 @@ class Zone(models.Model):
 
 
 class Profile(models.Model):
+
     outlet_id = models.CharField(
-        verbose_name="Outlet ID", max_length=12, primary_key=True
+        primary_key=True, verbose_name="Outlet ID", max_length=12
+    )
+    outlet_type_id = models.CharField(
+        max_length=16, verbose_name="Outlet Type ID", unique=True, null=True
     )
     outlet_name = models.CharField(
-        verbose_name="Outlet Name", max_length=50, blank=True, null=True
+        verbose_name="Outlet Name", max_length=100, blank=True, null=True
     )
     owner_name = models.CharField(
-        verbose_name="Owner Name", max_length=70, blank=True, null=True
+        verbose_name="Owner Name", max_length=100, blank=True, null=True
     )
     holding_no = models.CharField(
         verbose_name="Holding No", max_length=10, blank=True, null=True
@@ -153,10 +157,27 @@ class Profile(models.Model):
         verbose_name="Entry By", max_length=50, blank=True, null=True
     )
     visit_date = models.DateField(verbose_name="Visit Date", blank=True, null=True)
-    # entry_date = models.DateTimeField(verbose_name="Entry Date", default = datetime.now)
 
     def __str__(self):
         return self.outlet_id
 
     class Meta:
         db_table = "profile"
+
+
+class Brand(models.Model):
+    brand_code = models.CharField(
+        verbose_name="Brand Code", max_length=2, primary_key=True
+    )
+    brand_name = models.CharField(
+        verbose_name="Brand Name", max_length=100, blank=True, null=True
+    )
+    company_name = models.CharField(
+        verbose_name="Company Name", max_length=100, blank=True, null=True
+    )
+
+    def __str__(self):
+        return self.brand_code
+
+    class Meta:
+        db_table = "brand"

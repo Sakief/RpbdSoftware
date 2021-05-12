@@ -41,6 +41,13 @@
           <i class="fa fa-plus"></i> New Profile
         </button>
       </div>
+      <div class="td">
+        action
+        <span *ngIf="notification" class="elementToFadeInAndOut">
+          <i class="fas fa-check-circle {{ notification.class }}"></i>
+          {{ notification.message }}
+        </span>
+      </div>
     </div>
   </div>
   <div class="tbody">
@@ -273,17 +280,18 @@
           class="btn"
           [disabled]="fg.invalid"
           [ngClass]="
-            fg.get('outlet_id').value == 0 ? 'btn-success' : 'btn-outline-dark'
+            fg.get('incremented_outlet_id').value == 0
+              ? 'btn-success'
+              : 'btn-outline-dark'
           "
           style="width: 130px"
-          (click)="redirect()"
         >
           <i class="far fa-save fa-lg"></i>
-          {{ fg.get("outlet_id").value == 0 ? "Create" : "Update" }}
+          {{ fg.get("incremented_outlet_id").value == 0 ? "Create" : "Update" }}
         </button>
         <button
           class="btn btn-light ml-1"
-          (click)="onDelete(fg.get('outlet_id').value, i)"
+          (click)="onDelete(fg.get('incremented_outlet_id').value, i)"
         >
           <i class="far fa-trash-alt fa-lg text-danger"></i>
         </button>

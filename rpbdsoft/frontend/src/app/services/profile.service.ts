@@ -12,6 +12,7 @@ export class ProfileService {
   baseUrl = 'http://127.0.0.1:8000/api/profile-grid/';
   createUrl = 'http://127.0.0.1:8000/api/profile-crud/';
   updateUrl = 'http://127.0.0.1:8000/api/profile-update/';
+  deleteUrl = 'http://127.0.0.1:8000/api/profile-delete/';
 
   httpheaders = {
     headers: { 'Content-Type': 'application/json' },
@@ -27,9 +28,12 @@ export class ProfileService {
     return this.httpClient.post(this.createUrl, formData);
   }
   updateProfile(formData: any) {
-    return this.httpClient.put(this.updateUrl + formData.outlet_id, formData);
+    return this.httpClient.put(
+      this.updateUrl + formData.incremented_outlet_id,
+      formData
+    );
   }
-  deleteProfile(outlet_id: any) {
-    return this.httpClient.delete(this.updateUrl + outlet_id);
+  deleteProfile(id: any) {
+    return this.httpClient.delete(this.deleteUrl + id);
   }
 }

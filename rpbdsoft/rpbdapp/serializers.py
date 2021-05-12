@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from rpbdapp.models import Division, District, Thana, MarketPoint, Zone, Profile
+from rpbdapp.models import Division, District, Thana, MarketPoint, Zone, Profile, Brand
 
 
 class DivisionSerializer(serializers.ModelSerializer):
@@ -38,6 +38,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = (
+            "incremented_outlet_id",
             "outlet_id",
             "outlet_name",
             "owner_name",
@@ -69,4 +70,14 @@ class ProfileSerializer(serializers.ModelSerializer):
             "survey_by",
             "entry_by",
             "visit_date",
+        )
+
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = (
+            "brand_code",
+            "brand_name",
+            "company_name",
         )

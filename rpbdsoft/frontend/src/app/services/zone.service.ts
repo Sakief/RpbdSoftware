@@ -8,32 +8,31 @@ import { Zone } from '../model/zone';
 })
 export class ZoneService {
   baseUrl = 'http://127.0.0.1:8000/api/zone-list/';
-  updateUrl = 'http://127.0.0.1:8000/api/zone-detail';
+  updateUrl = 'http://127.0.0.1:8000/api/zone-update/';
+  createUrl = 'http://127.0.0.1:8000/api/zone-create/';
 
   httpheaders = {
     headers: { 'Content-Type': 'application/json' },
   };
 
   constructor(private httpClient: HttpClient) {}
-  editZone(zone: Zone) {  
-    return this.httpClient.put(this.updateUrl + 'zone-detail/', zone);  
-}  
+  editZone(zone: Zone) {
+    return this.httpClient.put(this.updateUrl + 'zone-detail/', zone);
+  }
 
   getZone() {
     return this.httpClient.get(this.baseUrl);
   }
 
-  createZone(zone_code: string, zone_name: string) {
-    const body = JSON.stringify({ zone_code, zone_name });
-    return this.httpClient.post(this.baseUrl, body, this.httpheaders);
+  createZone(formData: any) {
+    return this.httpClient.post(this.createUrl, formData);
   }
 
-  updateZone(zone: Zone): Observable < string > {  
-    const httpOptions = {  
-        headers: new HttpHeaders({  
-            'Content-Type': 'application/json'  
-        })  
-    };  
-    return this.httpClient.put < string > (this.updateUrl, zone, httpOptions);
-}
+  updateZone(formData: any) {
+    return this.httpClient.put(this.updateUrl + formData.zone_code, formData);
+  }
+
+  deleteZone(id: any) {
+    return this.httpClient.delete(this.updateUrl + id);
+  }
 }

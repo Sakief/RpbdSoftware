@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class ProfileCrudComponent implements OnInit {
   profileForms: FormArray = this.fb.array([]);
+  notification: any;
 
   constructor(
     private fb: FormBuilder,
@@ -25,9 +26,10 @@ export class ProfileCrudComponent implements OnInit {
         (res as []).forEach((profile: any) => {
           this.profileForms.push(
             this.fb.group({
+              incremented_outlet_id: [profile.incremented_outlet_id],
               outlet_id: [profile.outlet_id],
               outlet_name: [profile.outlet_name],
-              owner_name: [profile.outlet_owner_name],
+              owner_name: [profile.owner_name],
               holding_no: [profile.holding_no],
               road_name: [profile.road_name],
               block_no: [profile.block_no],
@@ -63,13 +65,14 @@ export class ProfileCrudComponent implements OnInit {
     });
   }
 
-  redirect() {
-    this.router.navigate(['/main']);
-  }
+  // redirect() {
+  //   this.router.navigateByUrl('/main');
+  // }
 
   addProfileForm() {
     this.profileForms.push(
       this.fb.group({
+        incremented_outlet_id: [0],
         outlet_id: ['', Validators.required],
         outlet_name: [''],
         owner_name: [''],
@@ -106,19 +109,45 @@ export class ProfileCrudComponent implements OnInit {
   }
 
   profileSubmit(fg: FormGroup) {
-    if (fg.value.outlet_id == 0)
+    if (fg.value.incremented_outlet_id == 0)
       this.profileservice.createProfile(fg.value).subscribe((res: any) => {
-        fg.patchValue({ outlet_id: res.outlet_id });
+        fg.patchValue({ incremeneted_outlet_id: res.incremented_outlet_id });
+        this.showNotification('insert');
       });
     else
       this.profileservice.updateProfile(fg.value).subscribe((res: any) => {
-        fg.patchValue({ outlet_id: res.outlet_id });
+        this.showNotification('update');
       });
   }
 
-  onDelete(outlet_id: any, i: any) {
-    this.profileservice.deleteProfile(outlet_id).subscribe((res) => {
-      this.profileForms.removeAt(i);
-    });
+  onDelete(incremented_outlet_id: number, i: any) {
+    if (incremented_outlet_id == 0) this.profileForms.removeAt(i);
+    else if (confirm('Do you want to delete this outlet?'))
+      this.profileservice
+        .deleteProfile(incremented_outlet_id)
+        .subscribe((res) => {
+          this.profileForms.removeAt(i);
+          this.showNotification('delete');
+        });
+  }
+
+  showNotification(category: any) {
+    switch (category) {
+      case 'insert':
+        this.notification = { class: 'text-success', message: 'saved!' };
+        break;
+      case 'update':
+        this.notification = { class: 'text-primary', message: 'updated!' };
+        break;
+      case 'delete':
+        this.notification = { class: 'text-danger', message: 'deleted!' };
+        break;
+
+      default:
+        break;
+    }
+    setTimeout(() => {
+      this.notification = null;
+    }, 2000);
   }
 }

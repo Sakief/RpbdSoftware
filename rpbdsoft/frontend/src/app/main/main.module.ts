@@ -39,6 +39,7 @@ import { MarketGridComponent } from './market-grid/market-grid.component';
 import { MarketCreateComponent } from './market-create/market-create.component';
 import { MarketUpdateComponent } from './market-update/market-update.component';
 import { ProfileCreateComponent } from './profile-create/profile-create.component';
+import { ProfileUpdateComponent } from './profile-update/profile-update.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'main/market-create', component: MarketCreateComponent },
   { path: 'main/market-update', component: MarketUpdateComponent },
   { path: 'main/profile-create', component: ProfileCreateComponent },
+  { path: 'main/profile-update', component: ProfileUpdateComponent },
 ];
 
 @NgModule({
@@ -89,6 +91,7 @@ const routes: Routes = [
     MarketCreateComponent,
     MarketUpdateComponent,
     ProfileCreateComponent,
+    ProfileUpdateComponent,
   ],
   imports: [
     CommonModule,

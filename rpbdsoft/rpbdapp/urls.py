@@ -19,8 +19,8 @@ urlpatterns = [
     path("api/profile-grid/", views.ProfileGridView.as_view()),
     # path("api/profile-crud/", views.ProfileCrudView.as_view()),
     path("api/profile-create/", views.ProfileCreateView.as_view()),
-    path("api/profile-update/<int:pk>", views.ProfileUpdateView.as_view()),
-    path("api/profile-delete/<int:pk>", views.ProfileDeleteView.as_view()),
+    path("api/profile-update/<str:pk>", views.ProfileUpdateView.as_view()),
+    # path("api/profile-delete/<str:pk>", views.ProfileDeleteView.as_view()),
     path("api/brand-grid/", views.BrandGridView.as_view()),
     path("api/brand-create/", views.BrandCreateView.as_view()),
     path("api/brand-update/<str:pk>", views.BrandUpdateView.as_view())

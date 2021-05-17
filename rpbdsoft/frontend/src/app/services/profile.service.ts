@@ -28,12 +28,9 @@ export class ProfileService {
     return this.httpClient.post(this.createUrl, formData);
   }
   updateProfile(formData: any) {
-    return this.httpClient.put(
-      this.updateUrl + formData.incremented_outlet_id,
-      formData
-    );
+    return this.httpClient.put(this.updateUrl + formData.outlet_id, formData);
   }
   deleteProfile(id: any) {
-    return this.httpClient.delete(this.deleteUrl + id);
+    return this.httpClient.delete(this.updateUrl + id);
   }
 }

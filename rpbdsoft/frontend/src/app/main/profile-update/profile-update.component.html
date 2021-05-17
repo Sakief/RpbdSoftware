@@ -1,0 +1,293 @@
+<div class="grid-Table">
+  <div class="thead">
+    <div class="tr">
+      <div class="td">Outlet ID.</div>
+      <div class="td">Outlet Type ID.</div>
+      <div class="td">Outlet Name</div>
+      <div class="td">Owner Name</div>
+      <div class="td">Holding No.</div>
+      <div class="td">Road Name</div>
+      <div class="td">Block No.</div>
+      <div class="td">Village</div>
+      <div class="td">Union</div>
+      <div class="td">Post Office</div>
+      <div class="td">Market Code</div>
+      <div class="td">Zone Code</div>
+      <div class="td">Thana Code</div>
+      <div class="td">District Code</div>
+      <div class="td">Outlet Type</div>
+      <div class="td">Manager Name</div>
+      <div class="td">Respondent Designation</div>
+      <div class="td">Contact No1</div>
+      <div class="td">Contact No2</div>
+      <div class="td">Contact No3</div>
+      <div class="td">Total Staff</div>
+      <div class="td">Outlet Landmark</div>
+      <div class="td">GPS Lattitude</div>
+      <div class="td">GPS Longitude</div>
+      <div class="td">Storage Capacity</div>
+      <div class="td">Front Length</div>
+      <div class="td">Front Width</div>
+      <div class="td">Weekly Holiday</div>
+      <div class="td">Nid</div>
+      <div class="td">Survey By</div>
+      <div class="td">Entry By</div>
+      <div class="td">Vist Date</div>
+
+      <div class="td">
+        action
+        <span *ngIf="notification" class="elementToFadeInAndOut">
+          <i class="fas fa-check-circle {{ notification.class }}"></i>
+          {{ notification.message }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="tbody">
+    <form
+      class="tr"
+      [formGroup]="fg"
+      *ngFor="let fg of profileForms.controls; let i = index"
+      (submit)="profileUpdate(fg)"
+    >
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="outlet_id"
+          style="width: 130px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="outlet_type_id"
+          style="width: 145px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="outlet_name"
+          style="width: 380px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="owner_name"
+          style="width: 300px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="holding_no"
+          style="width: 70px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="road_name"
+          style="width: 100px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="block_no"
+          style="width: 50px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="village"
+          style="width: 180px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="union"
+          style="width: 180px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="post_office"
+          style="width: 180px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="market_code"
+          style="width: 120px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="zone_code"
+          style="width: 120px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="thana_code"
+          style="width: 110px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="district_code"
+          style="width: 100px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="outlet_type"
+          style="width: 230px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="manager_name"
+          style="width: 300px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="respondent_designation"
+          style="width: 200px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="contact_no1"
+          style="width: 140px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="contact_no2"
+          style="width: 140px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="contact_no3"
+          style="width: 140px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="total_staff"
+          style="width: 45px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="outlet_landmark"
+          style="width: 400px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="gps_lat"
+          style="width: 100px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="gps_long"
+          style="width: 100px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="storage_capacity"
+          style="width: 70px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="front_length"
+          style="width: 60px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="front_width"
+          style="width: 60px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="weekly_holiday"
+          style="width: 40px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="nid"
+          style="width: 140px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="survey_by"
+          style="width: 300px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="entry_by"
+          style="width: 300px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="visit_date"
+          style="width: 150px"
+        />
+      </div>
+
+      <div class="td">
+        <button type="submit" class="btn">
+          <i class="far fa-save fa-lg"></i>
+          Update
+        </button>
+        <button
+          class="btn btn-light ml-1"
+          (click)="onDelete(fg.get('outlet_id').value, i)"
+        >
+          <i class="far fa-trash-alt fa-lg text-danger"></i>
+          delete
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

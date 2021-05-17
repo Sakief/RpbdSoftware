@@ -347,25 +347,25 @@ class ProfileUpdateView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # @action(detail=True, methods=["DELETE"])
-    # def delete(self, request, pk, format=None):
-    #     profiles = self.get_object(pk)
-    #     profiles.delete()
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class ProfileDeleteView(APIView):
-    def get_object(self, pk):
-        try:
-            return Profile.objects.get(pk=pk)
-        except Profile.DoesNotExist:
-            raise Http404
-
     @action(detail=True, methods=["DELETE"])
     def delete(self, request, pk, format=None):
         profiles = self.get_object(pk)
         profiles.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# class ProfileDeleteView(APIView):
+#     def get_object(self, pk):
+#         try:
+#             return Profile.objects.get(pk=pk)
+#         except Profile.DoesNotExist:
+#             raise Http404
+
+#     @action(detail=True, methods=["DELETE"])
+#     def delete(self, request, pk, format=None):
+#         profiles = self.get_object(pk)
+#         profiles.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class BrandGridView(APIView):

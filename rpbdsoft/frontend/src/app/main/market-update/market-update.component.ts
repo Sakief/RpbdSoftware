@@ -19,7 +19,7 @@ export class MarketUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.marketservice.getMarket().subscribe((res) => {
-      if (res == []) this.addBrandForm();
+      if (res == []) this.addMarketForm();
       else {
         (res as []).forEach((market: any) => {
           this.marketForms.push(
@@ -33,7 +33,7 @@ export class MarketUpdateComponent implements OnInit {
     });
   }
 
-  addBrandForm() {
+  addMarketForm() {
     this.marketForms.push(
       this.fb.group({
         market_code: ['', Validators.required],

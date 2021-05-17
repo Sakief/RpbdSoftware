@@ -18,7 +18,7 @@ export class ZoneUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.zoneservice.getZone().subscribe((res) => {
-      if (res == []) this.addBrandForm();
+      if (res == []) this.addZoneForm();
       else {
         (res as []).forEach((zone: any) => {
           this.zoneForms.push(
@@ -32,7 +32,7 @@ export class ZoneUpdateComponent implements OnInit {
     });
   }
 
-  addBrandForm() {
+  addZoneForm() {
     this.zoneForms.push(
       this.fb.group({
         zone_code: ['', Validators.required],

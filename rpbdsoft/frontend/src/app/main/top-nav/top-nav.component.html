@@ -1,0 +1,256 @@
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="isExpanded = !isExpanded">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="example-app-name" routerLink="/main">Crown RPBD</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav
+    #sidenav
+    class="example-sidenav"
+    mode="side"
+    opened="true"
+    (mouseenter)="mouseenter()"
+    (mouseleave)="mouseleave()"
+  >
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+        <span class="full-width" *ngIf="isExpanded || isShowing">Menu</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <mat-icon
+          class="menu-button"
+          [ngClass]="{ rotated: showSubmenu }"
+          *ngIf="isExpanded || isShowing"
+          >expand_more</mat-icon
+        >
+      </mat-list-item>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <mat-list-item
+          (click)="showSubSubMenu = !showSubSubMenu"
+          class="parent"
+        >
+          <span class="full-width" *ngIf="isExpanded || isShowing"
+            >Profile</span
+          >
+
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: showSubSubMenu }"
+            *ngIf="isExpanded || isShowing"
+            >expand_more</mat-icon
+          >
+        </mat-list-item>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: showSubSubMenu }"
+          *ngIf="isShowing || isExpanded"
+        >
+          <mat-list-item routerLink="/profile/profile-grid"
+            >Profile Grid</mat-list-item
+          >
+          <mat-list-item routerLink="/profile/profile-create"
+            >Profile Create</mat-list-item
+          >
+          <mat-list-item routerLink="/profile/profile-update"
+            >Profile Update</mat-list-item
+          >
+        </div>
+      </div>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <mat-list-item
+          (click)="showDivisionSubMenu = !showDivisionSubMenu"
+          class="parent"
+        >
+          <span class="full-width" *ngIf="isExpanded || isShowing"
+            >Division</span
+          >
+
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: showDivisionSubMenu }"
+            *ngIf="isExpanded || isShowing"
+            >expand_more</mat-icon
+          >
+        </mat-list-item>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: showDivisionSubMenu }"
+          *ngIf="isShowing || isExpanded"
+        >
+          <mat-list-item routerLink="/main/division"
+            >Division Grid</mat-list-item
+          >
+        </div>
+      </div>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <mat-list-item
+          (click)="showDistrictSubMenu = !showDistrictSubMenu"
+          class="parent"
+        >
+          <span class="full-width" *ngIf="isExpanded || isShowing"
+            >District</span
+          >
+
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: showDistrictSubMenu }"
+            *ngIf="isExpanded || isShowing"
+            >expand_more</mat-icon
+          >
+        </mat-list-item>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: showDistrictSubMenu }"
+          *ngIf="isShowing || isExpanded"
+        >
+          <mat-list-item routerLink="/main/district-view"
+            >District Grid</mat-list-item
+          >
+        </div>
+      </div>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <mat-list-item
+          (click)="showThanaSubMenu = !showThanaSubMenu"
+          class="parent"
+        >
+          <span class="full-width" *ngIf="isExpanded || isShowing">Thana</span>
+
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: showThanaSubMenu }"
+            *ngIf="isExpanded || isShowing"
+            >expand_more</mat-icon
+          >
+        </mat-list-item>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: showThanaSubMenu }"
+          *ngIf="isShowing || isExpanded"
+        >
+          <mat-list-item routerLink="/main/thana-view"
+            >Thana Grid</mat-list-item
+          >
+        </div>
+      </div>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <mat-list-item
+          (click)="showZoneSubMenu = !showZoneSubMenu"
+          class="parent"
+        >
+          <span class="full-width" *ngIf="isExpanded || isShowing">Zone</span>
+
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: showZoneSubMenu }"
+            *ngIf="isExpanded || isShowing"
+            >expand_more</mat-icon
+          >
+        </mat-list-item>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: showZoneSubMenu }"
+          *ngIf="isShowing || isExpanded"
+        >
+          <mat-list-item routerLink="/zone/zone-grid">Zone Grid</mat-list-item>
+          <mat-list-item routerLink="/zone/zone-create"
+            >Zone Create</mat-list-item
+          >
+          <mat-list-item routerLink="/zone/zone-update"
+            >Zone Update</mat-list-item
+          >
+        </div>
+      </div>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <mat-list-item
+          (click)="showBrandSubMenu = !showBrandSubMenu"
+          class="parent"
+        >
+          <span class="full-width" *ngIf="isExpanded || isShowing">Brand</span>
+
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: showBrandSubMenu }"
+            *ngIf="isExpanded || isShowing"
+            >expand_more</mat-icon
+          >
+        </mat-list-item>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: showBrandSubMenu }"
+          *ngIf="isShowing || isExpanded"
+        >
+          <mat-list-item routerLink="/brand/brand-grid"
+            >Brand Grid</mat-list-item
+          >
+          <mat-list-item routerLink="/brand/brand-create"
+            >Brand Create</mat-list-item
+          >
+          <mat-list-item routerLink="/brand/brand-update"
+            >Brand Update</mat-list-item
+          >
+        </div>
+      </div>
+      <div
+        class="submenu"
+        [ngClass]="{ expanded: showSubmenu }"
+        *ngIf="isShowing || isExpanded"
+      >
+        <mat-list-item
+          (click)="showMarketSubMenu = !showMarketSubMenu"
+          class="parent"
+        >
+          <span class="full-width" *ngIf="isExpanded || isShowing">Market</span>
+
+          <mat-icon
+            class="menu-button"
+            [ngClass]="{ rotated: showMarketSubMenu }"
+            *ngIf="isExpanded || isShowing"
+            >expand_more</mat-icon
+          >
+        </mat-list-item>
+        <div
+          class="submenu"
+          [ngClass]="{ expanded: showMarketSubMenu }"
+          *ngIf="isShowing || isExpanded"
+        >
+          <mat-list-item routerLink="/market/market-grid"
+            >Market Grid</mat-list-item
+          >
+          <mat-list-item routerLink="/market/market-create"
+            >Market Create</mat-list-item
+          >
+          <mat-list-item routerLink="/market/market-update"
+            >Market Update</mat-list-item
+          >
+        </div>
+      </div>
+    </mat-nav-list>
+    <mat-nav-list> </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content"></div>
+</mat-sidenav-container>

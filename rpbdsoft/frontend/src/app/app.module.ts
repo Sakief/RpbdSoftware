@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // import { GridComponent } from './grid/grid.component';
 
@@ -30,6 +31,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     AgGridModule.withComponents([GridComponent]),
+    BrowserAnimationsModule,
   ],
   exports: [RouterModule],
   providers: [],

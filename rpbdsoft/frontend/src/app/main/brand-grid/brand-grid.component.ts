@@ -11,6 +11,7 @@ import { BrandService } from 'src/app/services/brand.service';
 export class BrandGridComponent implements OnInit {
   rowData: any;
   columnDefs: any;
+  isExpanded = true;
 
   private api!: GridApi;
   private columnApi!: ColumnApi;

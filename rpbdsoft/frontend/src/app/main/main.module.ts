@@ -56,6 +56,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ExpanPannelComponent } from './expan-pannel/expan-pannel.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -137,6 +139,7 @@ const routes: Routes = [
     ProfileCreateComponent,
     ProfileUpdateComponent,
     TopNavComponent,
+    ExpanPannelComponent,
   ],
   imports: [
     CommonModule,
@@ -161,6 +164,7 @@ const routes: Routes = [
     MatDividerModule,
     MatSidenavModule,
     MatListModule,
+    MatExpansionModule,
   ],
   exports: [MatSidenavModule],
   providers: [

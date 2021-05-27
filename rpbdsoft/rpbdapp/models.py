@@ -69,6 +69,11 @@ class Zone(models.Model):
 
 class Profile(models.Model):
 
+    POTENTIAL_CHOICES = (
+        ("Yes", "Yes"),
+        ("No", "Female"),
+    )
+
     outlet_id = models.CharField(
         primary_key=True, verbose_name="Outlet ID", max_length=12
     )
@@ -168,6 +173,33 @@ class Profile(models.Model):
     )
     # visit_date = models.DateField(verbose_name="Visit Date", blank=True, null=True)
     # entry_date = models.DateField(verbose_name="Entry Date", blank=True, null=True)
+    under_crown_dealer = models.CharField(
+        verbose_name="Under Crown Dealer", max_length=400, blank=True, null=True
+    )
+    under_crown_sr = models.CharField(
+        verbose_name="Under Crown SR", max_length=100, null=True, blank=True
+    )
+    potential_as_crown_dealer = models.CharField(
+        verbose_name="Potential as Crown Dealer",
+        choices=POTENTIAL_CHOICES,
+        max_length=50,
+        null=True,
+        blank=True,
+    )
+    potential_as_crown_retailer = models.CharField(
+        verbose_name="Potential as Crown Dealer",
+        choices=POTENTIAL_CHOICES,
+        max_length=50,
+        null=True,
+        blank=True,
+    )
+    potential_as_crown_merchandising = models.CharField(
+        verbose_name="Potential as Crown Dealer",
+        choices=POTENTIAL_CHOICES,
+        max_length=50,
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return self.outlet_id

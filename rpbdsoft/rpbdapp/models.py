@@ -71,7 +71,7 @@ class Profile(models.Model):
 
     POTENTIAL_CHOICES = (
         ("Yes", "Yes"),
-        ("No", "Female"),
+        ("No", "No"),
     )
 
     outlet_id = models.CharField(

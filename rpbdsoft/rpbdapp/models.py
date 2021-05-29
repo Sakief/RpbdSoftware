@@ -224,3 +224,21 @@ class Brand(models.Model):
 
     class Meta:
         db_table = "brand"
+
+
+class Merchandising(models.Model):
+    outlet_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    date = models.CharField(
+        verbose_name="Visit Month", max_length=100, null=True, blank=True
+    )
+    brand_code = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    merchandising_tools = models.CharField(
+        verbose_name="Merchandising tools", max_length=200, null=True, blank=True
+    )
+    quantity = models.IntegerField(verbose_name="Quantity", blank=True, null=True)
+
+    def __str__(self):
+        return self.outlet_id
+
+    class Meta:
+        db_table = "merchandising"

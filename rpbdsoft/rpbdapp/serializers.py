@@ -7,6 +7,7 @@ from rpbdapp.models import (
     Zone,
     Profile,
     Brand,
+    Merchandising,
 )
 
 
@@ -81,4 +82,16 @@ class BrandSerializer(serializers.ModelSerializer):
             "brand_code",
             "brand_name",
             "company_name",
+        )
+
+
+class MerchandisingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Merchandising
+        fields = (
+            "outlet_id",
+            "date",
+            "brand_code",
+            "merchandising_tools",
+            "quantity",
         )

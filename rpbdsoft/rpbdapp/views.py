@@ -9,6 +9,7 @@ from rpbdapp.models import (
     Zone,
     Profile,
     Brand,
+    Merchandising,
 )
 from rpbdapp.serializers import (
     DivisionSerializer,
@@ -18,6 +19,7 @@ from rpbdapp.serializers import (
     ZoneSerializer,
     ProfileSerializer,
     BrandSerializer,
+    MerchandisingSerializer,
 )
 from rest_framework.response import Response
 from rest_framework import filters
@@ -165,7 +167,7 @@ class MarketUpdateView(APIView):
 
     def get(self, request, pk):
         markets = self.get_object(pk)
-        serializer = MarketPointSerializer(self.zones)
+        serializer = MarketPointSerializer(self.markets)
         response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
 
@@ -407,7 +409,7 @@ class BrandUpdateView(APIView):
 
     def get(self, request, pk):
         brands = self.get_object(pk)
-        serializer = BrandSerializer(self.profiles)
+        serializer = BrandSerializer(brands)
         response = serializer.data
         return Response(response, status=status.HTTP_200_OK)
 
@@ -424,4 +426,63 @@ class BrandUpdateView(APIView):
     def delete(self, request, pk, format=None):
         brands = self.get_object(pk)
         brands.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class MerchandisingGridView(APIView):
+    def get(self, request, format=None):
+        brands = Merchandising.objects.all()
+        serializer = MerchandisingSerializer(brands, many=True)
+        response = serializer.data
+        return Response(response, status=status.HTTP_200_OK)
+
+
+class MerchandisngCreateView(APIView):
+    def get_object(self, pk):
+        try:
+            return Merchandising.objects.get(pk=pk)
+        except Merchandising.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        merchandisings = Merchandising.objects.all()
+        serializer = MerchandisingSerializer(merchandisings, many=True)
+        response = serializer.data
+        return Response(response, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=["POST"])
+    def post(self, request, format=None):
+        serializer = Serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class MerchandisingUpdateView(APIView):
+    def get_object(self, pk):
+        try:
+            return Merchandising.objects.get(pk=pk)
+        except Merchandising.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        merchandisings = self.get_object(pk)
+        serializer = MerchandisingSerializer(merchandisings)
+        response = serializer.data
+        return Response(response, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=["PUT"])
+    def put(self, request, pk, format=None):
+        merchandisings = self.get_object(pk)
+        serializer = MerchandisingSerializer(merchandisings, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=["DELETE"])
+    def delete(self, request, pk, format=None):
+        merchandisings = self.get_object(pk)
+        merchandisings.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

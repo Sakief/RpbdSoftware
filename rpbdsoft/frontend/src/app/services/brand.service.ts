@@ -30,7 +30,7 @@ export class BrandService {
   updateBrand(formData: any) {
     return this.httpClient.put(this.updateUrl + formData.brand_code, formData);
   }
-  deleteBrand(id: any) {
-    return this.httpClient.delete(this.updateUrl + id);
+  deleteBrand(brand_code: any) {
+    return this.httpClient.delete(this.updateUrl + brand_code);
   }
 }

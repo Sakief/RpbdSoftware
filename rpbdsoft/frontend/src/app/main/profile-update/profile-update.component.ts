@@ -11,6 +11,14 @@ import { Router } from '@angular/router';
 export class ProfileUpdateComponent implements OnInit {
   profileForms: FormArray = this.fb.array([]);
   notification: any;
+  profiles: any;
+
+  // applyFilter(filterValue: string) {
+  //   filterValue = filterValue.trim(); // Remove whitespace
+  //   filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+  //    = filterValue;
+  // }
+
   constructor(
     private fb: FormBuilder,
     private profileservice: ProfileService,

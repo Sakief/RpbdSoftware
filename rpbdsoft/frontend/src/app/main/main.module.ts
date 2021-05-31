@@ -58,6 +58,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ExpanPannelComponent } from './expan-pannel/expan-pannel.component';
+import { MerchandisingGridComponent } from './merchandising-grid/merchandising-grid.component';
+import { MerchandiseService } from '../services/merchandising.service';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -110,6 +112,14 @@ const routes: Routes = [
   // { path: 'profile-grid', component: ProfileGridComponent },
   // { path: 'profile-create', component: ProfileCreateComponent },
   // { path: 'profile-update', component: ProfileUpdateComponent },
+  {
+    path: 'merchandising',
+    children: [
+      { path: 'merchandising-grid', component: MerchandisingGridComponent },
+      //{ path: 'profile-create', component: ProfileCreateComponent },
+      //{ path: 'profile-update', component: ProfileUpdateComponent },
+    ],
+  },
 ];
 
 @NgModule({
@@ -140,6 +150,7 @@ const routes: Routes = [
     ProfileUpdateComponent,
     TopNavComponent,
     ExpanPannelComponent,
+    MerchandisingGridComponent,
   ],
   imports: [
     CommonModule,
@@ -173,6 +184,7 @@ const routes: Routes = [
     ThanaService,
     ZoneService,
     MarketService,
+    MerchandiseService,
   ],
 })
 export class MainModule {}

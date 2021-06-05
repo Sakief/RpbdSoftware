@@ -1,0 +1,44 @@
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="employees">
+    <div *ngFor="let employee of employees().controls; let empIndex = index">
+      <div
+        [formGroupName]="empIndex"
+        style="border: 1px solid blue; padding: 10px; width: 600px; margin: 5px"
+      >
+        {{ empIndex }}<mat-label> Outlet ID </mat-label>
+        <input type="text" formControlName="firstName" />
+        Visit Month:
+        <input type="text" formControlName="lastName" />
+
+        <button (click)="removeEmployee(empIndex)">Remove</button>
+
+        <div formArrayName="skills">
+          <div
+            *ngFor="
+              let skill of employeeSkills(empIndex).controls;
+              let skillIndex = index
+            "
+          >
+            <div [formGroupName]="skillIndex">
+              {{ skillIndex }}
+              Brand Code :
+              <input type="text" formControlName="skill" />
+              Merchandising Tools:
+              <input type="text" formControlName="exp" />
+              Qunatity:
+              <input type="text" formControlName="exp" />
+
+              <button (click)="removeEmployeeSkill(empIndex, skillIndex)">
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="addEmployeeSkill(empIndex)">
+          Add Brands
+        </button>
+      </div>
+    </div>
+    <button type="button" (click)="addEmployee()">Add Outlet</button>
+  </div>
+</form>

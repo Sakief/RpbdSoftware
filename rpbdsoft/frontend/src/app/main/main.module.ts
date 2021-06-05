@@ -60,6 +60,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ExpanPannelComponent } from './expan-pannel/expan-pannel.component';
 import { MerchandisingGridComponent } from './merchandising-grid/merchandising-grid.component';
 import { MerchandiseService } from '../services/merchandising.service';
+import { MerchandisingCreateComponent } from './merchandising-create/merchandising-create.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -116,7 +117,7 @@ const routes: Routes = [
     path: 'merchandising',
     children: [
       { path: 'merchandising-grid', component: MerchandisingGridComponent },
-      //{ path: 'profile-create', component: ProfileCreateComponent },
+      { path: 'merchandising-create', component: MerchandisingCreateComponent },
       //{ path: 'profile-update', component: ProfileUpdateComponent },
     ],
   },
@@ -151,6 +152,7 @@ const routes: Routes = [
     TopNavComponent,
     ExpanPannelComponent,
     MerchandisingGridComponent,
+    MerchandisingCreateComponent,
   ],
   imports: [
     CommonModule,

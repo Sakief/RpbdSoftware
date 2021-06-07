@@ -27,4 +27,7 @@ urlpatterns = [
     path("api/merchandising-grid/", views.MerchandisingGridView.as_view()),
     path("api/merchandising-create/", views.MerchandisngCreateView.as_view()),
     path("api/merchandising-update/<int:pk>", views.MerchandisingUpdateView.as_view()),
+    path("api/retail-grid/", views.RetailGridView.as_view()),
+    path("api/retail-create/", views.RetailCreateView.as_view()),
+    path("api/retail-update/<int:pk>", views.RetailUpdateView.as_view()),
 ]

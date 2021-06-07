@@ -8,6 +8,7 @@ from rpbdapp.models import (
     Profile,
     Brand,
     Merchandising,
+    Retail,
 )
 
 
@@ -94,4 +95,27 @@ class MerchandisingSerializer(serializers.ModelSerializer):
             "brand_code",
             "merchandising_tools",
             "quantity",
+        )
+
+
+class RetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Retail
+        fields = (
+            "outlet_id",
+            "start_month",
+            "end_month",
+            "visit_year",
+            "brand_code",
+            "vb",
+            "start_month_volume",
+            "end_month_volume",
+            "purchase_min",
+            "purchase_max",
+            "sales_min",
+            "sales_max",
+            "purchase_source",
+            "satisfaction_level",
+            "do_to_delivery",
+            "monthly_credit",
         )

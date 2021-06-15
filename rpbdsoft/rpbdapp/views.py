@@ -454,7 +454,7 @@ class MerchandisngCreateView(APIView):
 
     @action(detail=True, methods=["POST"])
     def post(self, request, format=None):
-        serializer = Serializer(data=request.data)
+        serializer = MerchandisingSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -513,7 +513,7 @@ class RetailCreateView(APIView):
 
     @action(detail=True, methods=["POST"])
     def post(self, request, format=None):
-        serializer = Serializer(data=request.data)
+        serializer = RetailSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -61,6 +61,7 @@ import { ExpanPannelComponent } from './expan-pannel/expan-pannel.component';
 import { MerchandisingGridComponent } from './merchandising-grid/merchandising-grid.component';
 import { MerchandiseService } from '../services/merchandising.service';
 import { MerchandisingCreateComponent } from './merchandising-create/merchandising-create.component';
+import { MerchCreateComponent } from './merch-create/merch-create.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -113,13 +114,17 @@ const routes: Routes = [
   // { path: 'profile-grid', component: ProfileGridComponent },
   // { path: 'profile-create', component: ProfileCreateComponent },
   // { path: 'profile-update', component: ProfileUpdateComponent },
+  // {
+  //   path: 'merchandising',
+  //   children: [
+  //     { path: 'merchandising-grid', component: MerchandisingGridComponent },
+  //     { path: 'merchandising-create', component: MerchandisingCreateComponent },
+  //     //{ path: 'profile-update', component: ProfileUpdateComponent },
+  //   ],
+  // },
   {
     path: 'merchandising',
-    children: [
-      { path: 'merchandising-grid', component: MerchandisingGridComponent },
-      { path: 'merchandising-create', component: MerchandisingCreateComponent },
-      //{ path: 'profile-update', component: ProfileUpdateComponent },
-    ],
+    children: [{ path: 'merch-create', component: MerchCreateComponent }],
   },
 ];
 
@@ -153,6 +158,7 @@ const routes: Routes = [
     ExpanPannelComponent,
     MerchandisingGridComponent,
     MerchandisingCreateComponent,
+    MerchCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -179,7 +185,7 @@ const routes: Routes = [
     MatListModule,
     MatExpansionModule,
   ],
-  exports: [MatSidenavModule],
+  exports: [MatSidenavModule, ReactiveFormsModule],
   providers: [
     DivisionService,
     DistrictService,

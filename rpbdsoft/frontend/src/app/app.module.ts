@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // import { GridComponent } from './grid/grid.component';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AgGridModule,
     MainModule,
     AuthModule,

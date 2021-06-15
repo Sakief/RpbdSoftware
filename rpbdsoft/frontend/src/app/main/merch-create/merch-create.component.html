@@ -1,0 +1,57 @@
+<div class="container">
+  <form [formGroup]="merchForm" (ngsubmit)="addMerch(merchForm.value)">
+    <p>
+      <label for="outletid">Outlet ID:</label>
+      <input type="text" formControlName="outlet_id" class="form-control" />
+    </p>
+    <p>
+      <label for="visitmonth">Visit Month:</label>
+      <input type="text" formControlName="visit_month" class="form-control" />
+    </p>
+
+    <table class="table table-bordered" formArrayName="brands">
+      <tr>
+        <th colspan="2">Add Merchandising For Multiple Brands:</th>
+        <th width="150px">
+          <button type="button" (click)="addBrand()" class="btn btn-primary">
+            Add Brands
+          </button>
+        </th>
+      </tr>
+      <tr
+        *ngFor="let brand of brands().controls; let i = index"
+        [formGroupName]="i"
+      >
+        <td>
+          Brand Code :
+          <input
+            type="text"
+            formControlName="brand_code"
+            class="form-control"
+          />
+        </td>
+        <td>
+          Merchandising Tools:
+          <input
+            type="text"
+            formControlName="merchandising_tools"
+            class="form-control"
+          />
+        </td>
+        <td>
+          Quantity:
+          <input type="text" formControlName="quantity" class="form-control" />
+        </td>
+        <td>
+          <button (click)="removeBrand(i)" class="btn btn-danger">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+{{ merchForm.value | json }}

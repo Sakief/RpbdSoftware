@@ -1,3 +1,6 @@
+import os
+from platform import python_version
+from pyreportjasper import PyReportJasper
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, Http404
 from rest_framework.decorators import api_view, action
@@ -547,3 +550,50 @@ class RetailUpdateView(APIView):
         retails = self.get_object(pk)
         retails.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# class ReportJasper(APIView):
+# @action(detail=True, method=["GET"])
+# def processing():
+#     REPORTS_DIR = os.path.join(
+#         os.path.abspath(
+#             os.path.dirname(
+#                 "C:/Users/Sakief/JaspersoftWorkspace/RpbdSoftwareReports"
+#             )
+#         ),
+#         "reports",
+#     )
+#     input_file = os.path.join(REPORTS_DIR, "District Report.jrxml")
+#     output_file = os.path.join(REPORTS_DIR, "DistrictReport")
+#     conn = {
+#         "driver": "mysql",
+#         "username": "root",
+#         "password": "123456",
+#         "host": "localhost",
+#         "database": "rpbddb",
+#         "schema": "rpbddb",
+#         "port": "3306",
+#         "jdbc_dir": "D:/jar_files/mysql-connector-java-8.0.21.jar",
+#     }
+#     print(python_version())
+#     pyreportjasper = PyReportJasper()
+#     pyreportjasper.config(
+#         input_file,
+#         output_file,
+#         db_connection=conn,
+#         output_formats=["pdf", "rtf"],
+#         # parameters={"python_version": python_version()},
+#         locale="en_US",
+#     )
+
+#     pyreportjasper.processreport()
+
+#     def processing():
+#         REPORTS_DIR = os.path.join(
+#             os.path.abspath(os.path.dirname(__file__)), "reports"
+#         )
+#         input_file = os.path.join(REPORTS_DIR, "Disrtict Report.jrxml")
+#         output_file = os.path.join(REPORTS_DIR, "csv")
+#         pyreportjasper = PyReportJasper()
+#         pyreportjasper.config(input_file, output_file, output_formats=["pdf", "rtf"])
+#         pyreportjasper.process_report()

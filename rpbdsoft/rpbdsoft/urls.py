@@ -27,6 +27,6 @@ urlpatterns = [
     path("", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("", include("rpbdapp.urls")),
-    # path(r"^report_builder/", include("report_builder.urls")),
+    # path("explorer/", include("explorer.urls")),
     # path(r"", include(explorer.urls)),
 ]

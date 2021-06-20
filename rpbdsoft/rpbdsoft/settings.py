@@ -44,8 +44,9 @@ INSTALLED_APPS = [
     # rpbdsoftware applications
     "rpbdapp.apps.RpbdappConfig",
     # "report_builder",
-    "explorer",
+    # "explorer",
 ]
+
 EXPLORER_CONNECTIONS = {"Default": "default"}
 EXPLORER_DEFAULT_CONNECTION = "default"
 
@@ -73,8 +74,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                # "django.core.context_processors.static",
-                # "django.core.context_processors.media",
+                # "django.template.context_processors.static",
+                # "django.template.context_processors.media",
             ],
         },
     },

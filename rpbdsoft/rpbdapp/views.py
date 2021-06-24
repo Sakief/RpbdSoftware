@@ -1,9 +1,21 @@
 import os
+import datetime
+from io import BytesIO
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+from reportlab.lib.pagesizes import letter, landscape
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle
+from reportlab.lib import colors
+from reportlab.lib.units import mm, inch
+from reportlab.lib.pagesizes import A4
+import pymysql
 from platform import python_version
 from pyreportjasper import PyReportJasper
+from django.db import connection
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, Http404
 from rest_framework.decorators import api_view, action
+from rest_framework import generics, viewsets
 from rpbdapp.models import (
     Division,
     District,
@@ -25,6 +37,7 @@ from rpbdapp.serializers import (
     BrandSerializer,
     MerchandisingSerializer,
     RetailSerializer,
+    TestSqlSerializer,
 )
 from rest_framework.response import Response
 from rest_framework import filters
@@ -597,3 +610,17 @@ class RetailUpdateView(APIView):
 #         pyreportjasper = PyReportJasper()
 #         pyreportjasper.config(input_file, output_file, output_formats=["pdf", "rtf"])
 #         pyreportjasper.process_report()
+
+
+# def add_page_number(self, canvas, doc):
+#     canvas.saveState()
+#     canvas.setFont("Times-Roman", 10)
+#     page_number_text = "%d" % (doc.page)
+#     canvas.drawCentredString(0.75 * inch, 0.75 * inch, page_number_text)
+#     canvas.restoreState()
+
+# def get_body_style(self):
+#     sample_style_sheet = getSampleStyleSheet()
+#     body_style = sample_style_sheet["BodyText"]
+#     body_style.fontSize = 18
+#     return body_style

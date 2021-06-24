@@ -119,3 +119,9 @@ class RetailSerializer(serializers.ModelSerializer):
             "do_to_delivery",
             "monthly_credit",
         )
+
+
+class TestSqlSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ("outlet_id", "front_width")

@@ -150,3 +150,13 @@
     </mat-expansion-panel>
   </mat-accordion>
 </div>
+
+<button mat-button [matMenuTriggerFor]="menu">Report</button>
+<mat-menu #menu="matMenu">
+  <a
+    href="http://localhost:8080/jasperserver/flow.html?_flowId=searchFlow&lastMode=true"
+    target="_blank"
+    mat-menu-item
+    >View Reports</a
+  >
+</mat-menu>

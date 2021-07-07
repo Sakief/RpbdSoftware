@@ -62,6 +62,7 @@ import { MerchandisingGridComponent } from './merchandising-grid/merchandising-g
 import { MerchandiseService } from '../services/merchandising.service';
 import { MerchandisingCreateComponent } from './merchandising-create/merchandising-create.component';
 import { MerchCreateComponent } from './merch-create/merch-create.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -159,6 +160,7 @@ const routes: Routes = [
     MerchandisingGridComponent,
     MerchandisingCreateComponent,
     MerchCreateComponent,
+    ReportComponent,
   ],
   imports: [
     CommonModule,

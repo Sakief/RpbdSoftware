@@ -63,6 +63,8 @@ import { MerchandiseService } from '../services/merchandising.service';
 import { MerchandisingCreateComponent } from './merchandising-create/merchandising-create.component';
 import { MerchCreateComponent } from './merch-create/merch-create.component';
 import { ReportComponent } from './report/report.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ThanadetailreportComponent } from './reports/thanadetailreport/thanadetailreport/thanadetailreport.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -115,18 +117,21 @@ const routes: Routes = [
   // { path: 'profile-grid', component: ProfileGridComponent },
   // { path: 'profile-create', component: ProfileCreateComponent },
   // { path: 'profile-update', component: ProfileUpdateComponent },
+  {
+    path: 'merchandising',
+    children: [
+      { path: 'merchandising-grid', component: MerchandisingGridComponent },
+      { path: 'merchandising-create', component: MerchandisingCreateComponent },
+      //{ path: 'profile-update', component: ProfileUpdateComponent },
+    ],
+  },
   // {
   //   path: 'merchandising',
   //   children: [
-  //     { path: 'merchandising-grid', component: MerchandisingGridComponent },
-  //     { path: 'merchandising-create', component: MerchandisingCreateComponent },
-  //     //{ path: 'profile-update', component: ProfileUpdateComponent },
-  //   ],
+
+  //     { path: 'merch-create', component: MerchCreateComponent }
+  // ],
   // },
-  {
-    path: 'merchandising',
-    children: [{ path: 'merch-create', component: MerchCreateComponent }],
-  },
 ];
 
 @NgModule({
@@ -161,6 +166,8 @@ const routes: Routes = [
     MerchandisingCreateComponent,
     MerchCreateComponent,
     ReportComponent,
+    NavbarComponent,
+    ThanadetailreportComponent,
   ],
   imports: [
     CommonModule,

@@ -125,3 +125,15 @@ class TestSqlSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ("outlet_id", "front_width")
+
+
+# class ThanaDetailReportView(serializers.ModelSerializer):
+
+#     field = (
+#         "thana_name",
+#         "market_size",
+#         "mokam",
+#         "total_retail",
+#         "end_month",
+#         "district_name",
+#     )

@@ -1,0 +1,140 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>CrownRPBD</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div>
+      <button
+        mat-button
+        [matMenuTriggerFor]="belowMenu"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        District
+      </button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/main/district-view">
+          View District Code
+        </button>
+      </mat-menu>
+
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu2"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        Thana
+      </button>
+      <mat-menu #menu2="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/main/thana-view">
+          View Thana Code
+        </button>
+      </mat-menu>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu3"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        Zone
+      </button>
+      <mat-menu #menu3="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/zone/zone-grid">
+          View Zone Code
+        </button>
+        <button mat-menu-item routerLink="/zone/zone-create">
+          Create a Zone
+        </button>
+        <button mat-menu-item routerLink="/zone/zone-update">
+          Update or Delete a Zone
+        </button>
+      </mat-menu>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu4"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        Mokam
+      </button>
+      <mat-menu #menu4="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/market/market-grid">
+          View Mokam Code
+        </button>
+        <button mat-menu-item routerLink="/market/market-create">
+          Create a New Mokam
+        </button>
+        <button mat-menu-item routerLink="/market/market-update">
+          Update or Delete a Mokam
+        </button>
+      </mat-menu>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu5"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        Brand
+      </button>
+      <mat-menu #menu5="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/brand/brand-grid">
+          View Brand Code
+        </button>
+        <button mat-menu-item routerLink="/brand/brand-create">
+          Create a Brand
+        </button>
+        <button mat-menu-item routerLink="/brand/brand-update">
+          Update or Delete a Brand
+        </button>
+      </mat-menu>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu6"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        Outlet Profile
+      </button>
+      <mat-menu #menu6="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/profile/profile-grid">
+          View Profile Details
+        </button>
+        <button mat-menu-item routerLink="/profile/profile-create">
+          Create a Profile
+        </button>
+        <button mat-menu-item routerLink="/profile/profile-update">
+          Update or Delete a Profile
+        </button>
+      </mat-menu>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu7"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        Merchandising
+      </button>
+      <mat-menu #menu7="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/merchandising/merchandising-grid">
+          View Merchandising Data
+        </button>
+      </mat-menu>
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu8"
+        style="background-color: yellow; font-size: 15px; margin: 30px"
+      >
+        Report
+      </button>
+      <mat-menu #menu8="matMenu">
+        <a
+          href="http://localhost:8080/jasperserver/flow.html?_flowId=searchFlow&lastMode=true"
+          target="_blank"
+          mat-menu-item
+          >View Reports</a
+        >
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div>
+  <img src="assets/img/crc.jpeg" />
+</div>

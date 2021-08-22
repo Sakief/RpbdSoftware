@@ -33,4 +33,6 @@ urlpatterns = [
     path("api/retail-create/", views.RetailCreateView.as_view()),
     path("api/retail-update/<int:pk>", views.RetailUpdateView.as_view()),
     # path("api/report-jasper/", views.ReportJasper.as_view()),
+    path("api/report/thanadetails", views.ThanaDetailReportView.as_view()),
+    path("api/report/crownsummary", views.CrownSummaryReportView.as_view()),
 ]

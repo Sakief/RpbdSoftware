@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 // import { GridComponent } from './grid/grid.component';
 
@@ -34,6 +35,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AgGridModule.withComponents([GridComponent]),
     BrowserAnimationsModule,
+    MDBBootstrapModule.forRoot(),
   ],
   exports: [RouterModule],
   providers: [],

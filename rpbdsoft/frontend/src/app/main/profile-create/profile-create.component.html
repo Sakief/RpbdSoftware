@@ -4,6 +4,15 @@
 <div class="grid-Table">
   <div class="thead">
     <div class="tr">
+      <div class="td">
+        <button
+          class="btn btn-outline-success"
+          (click)="addProfileForm()"
+          style="width: 180px"
+        >
+          <i class="fa fa-plus"></i> New Profile
+        </button>
+      </div>
       <div class="td">Outlet ID.</div>
       <div class="td">Outlet Type ID.</div>
       <div class="td">Outlet Name</div>
@@ -38,15 +47,6 @@
       <div class="td">Vist Date</div>
 
       <div class="td">
-        <button
-          class="btn btn-outline-success"
-          (click)="addProfileForm()"
-          style="width: 180px"
-        >
-          <i class="fa fa-plus"></i> New Profile
-        </button>
-      </div>
-      <div class="td">
         action
         <span *ngIf="notification" class="elementToFadeInAndOut">
           <i class="fas fa-check-circle {{ notification.class }}"></i>
@@ -62,6 +62,9 @@
       *ngFor="let fg of profileForms.controls"
       (submit)="profileSubmit(fg)"
     >
+      <div class="td">
+        <p>Create a Profile</p>
+      </div>
       <div class="td">
         <input
           class="form-control"

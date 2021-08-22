@@ -1,5 +1,6 @@
 import os
 import datetime
+import pandas as pd
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
@@ -565,62 +566,89 @@ class RetailUpdateView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# class ReportJasper(APIView):
-# @action(detail=True, method=["GET"])
-# def processing():
-#     REPORTS_DIR = os.path.join(
-#         os.path.abspath(
-#             os.path.dirname(
-#                 "C:/Users/Sakief/JaspersoftWorkspace/RpbdSoftwareReports"
-#             )
-#         ),
-#         "reports",
-#     )
-#     input_file = os.path.join(REPORTS_DIR, "District Report.jrxml")
-#     output_file = os.path.join(REPORTS_DIR, "DistrictReport")
-#     conn = {
-#         "driver": "mysql",
-#         "username": "root",
-#         "password": "123456",
-#         "host": "localhost",
-#         "database": "rpbddb",
-#         "schema": "rpbddb",
-#         "port": "3306",
-#         "jdbc_dir": "D:/jar_files/mysql-connector-java-8.0.21.jar",
-#     }
-#     print(python_version())
-#     pyreportjasper = PyReportJasper()
-#     pyreportjasper.config(
-#         input_file,
-#         output_file,
-#         db_connection=conn,
-#         output_formats=["pdf", "rtf"],
-#         # parameters={"python_version": python_version()},
-#         locale="en_US",
-#     )
+class ThanaDetailReportView(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT 
+    t.thana_name,
+    SUM(r.end_month_volume) AS Market_Size,
+    COUNT(DISTINCT market_code_id) as mokam,
+    COUNT(DISTINCT outlet_id) as total_retail,
+    r.end_month,
+    d.district_name
+FROM
+    brand b,
+    retail r,
+    profile p,
+    thana t,
+    district d
+WHERE
+    r.brand_code_id = b.brand_code
+        AND t.thana_code = p.thana_code_id
+        AND d.district_code = p.district_code_id
+        AND p.outlet_id = r.outlet_id_id
+GROUP BY t.thana_code
+ORDER BY t.thana_name , Market_Size DESC;
+""",
+            )
 
-#     pyreportjasper.processreport()
+        row = cursor.fetchall()
 
-#     def processing():
-#         REPORTS_DIR = os.path.join(
-#             os.path.abspath(os.path.dirname(__file__)), "reports"
-#         )
-#         input_file = os.path.join(REPORTS_DIR, "Disrtict Report.jrxml")
-#         output_file = os.path.join(REPORTS_DIR, "csv")
-#         pyreportjasper = PyReportJasper()
-#         pyreportjasper.config(input_file, output_file, output_formats=["pdf", "rtf"])
-#         pyreportjasper.process_report()
+        return Response(row)
 
 
-# def add_page_number(self, canvas, doc):
-#     canvas.saveState()
-#     canvas.setFont("Times-Roman", 10)
-#     page_number_text = "%d" % (doc.page)
-#     canvas.drawCentredString(0.75 * inch, 0.75 * inch, page_number_text)
-#     canvas.restoreState()
+class CrownSummaryReportView(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT A.Market_Size, B.thana_name, B.crown_presence_mokam, B.crown_retail,B.crown_sales, B.end_month, B.district_name
+FROM
+(SELECT 
+    thana_name,
+    SUM(end_month_volume) AS Market_Size,
+    COUNT(DISTINCT market_code_id) as mokam,
+    COUNT(DISTINCT outlet_id) as total_retail,
+    end_month,
+    district_name
+FROM
+    brand ,
+    retail ,
+    profile ,
+    thana ,
+    district 
+WHERE
+    brand_code_id = brand_code
+        AND thana_code = thana_code_id
+        AND district_code = district_code_id
+        AND outlet_id = outlet_id_id
+GROUP BY thana_code
+ORDER BY thana_name , Market_Size DESC) as A,
 
-# def get_body_style(self):
-#     sample_style_sheet = getSampleStyleSheet()
-#     body_style = sample_style_sheet["BodyText"]
-#     body_style.fontSize = 18
-#     return body_style
+(SELECT DISTINCT
+    thana_name,
+    COUNT(DISTINCT market_code_id) AS crown_presence_mokam,
+    COUNT(DISTINCT outlet_id) AS crown_retail,
+    SUM(end_month_volume) AS crown_sales,
+    end_month,
+    district_name
+FROM
+    brand ,
+    retail ,
+    profile ,
+    thana ,
+    district 
+WHERE
+    brand_code_id = '36'
+        AND thana_code = thana_code_id
+        AND district_code = district_code_id
+        AND outlet_id = outlet_id_id
+GROUP BY thana_name , brand_code
+ORDER BY thana_name) as B
+
+WHERE A.thana_name = B.thana_name;
+"""
+            )
+        row = cursor.fetchall()
+
+        return Response(row)

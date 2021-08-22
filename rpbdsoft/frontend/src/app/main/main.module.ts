@@ -65,6 +65,7 @@ import { MerchCreateComponent } from './merch-create/merch-create.component';
 import { ReportComponent } from './report/report.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThanadetailreportComponent } from './reports/thanadetailreport/thanadetailreport/thanadetailreport.component';
+import { Thanadetailservice } from '../services/thanadetailreport.service';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -132,6 +133,12 @@ const routes: Routes = [
   //     { path: 'merch-create', component: MerchCreateComponent }
   // ],
   // },
+  {
+    path: 'reports',
+    children: [
+      { path: 'thanadetailreport', component: ThanadetailreportComponent },
+    ],
+  },
 ];
 
 @NgModule({

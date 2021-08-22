@@ -1,6 +1,7 @@
 import os
 import datetime
 import pandas as pd
+from collections import namedtuple
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
@@ -39,6 +40,7 @@ from rpbdapp.serializers import (
     MerchandisingSerializer,
     RetailSerializer,
     TestSqlSerializer,
+    ThanaDetailReportSerializer,
 )
 from rest_framework.response import Response
 from rest_framework import filters
@@ -567,11 +569,13 @@ class RetailUpdateView(APIView):
 
 
 class ThanaDetailReportView(APIView):
+    # serializers = ThanaDetailReportSerializer()
+
     def get(self, request):
         with connection.cursor() as cursor:
             cursor.execute(
                 """SELECT 
-    t.thana_name,
+    thana_name,
     SUM(r.end_month_volume) AS Market_Size,
     COUNT(DISTINCT market_code_id) as mokam,
     COUNT(DISTINCT outlet_id) as total_retail,
@@ -593,9 +597,21 @@ ORDER BY t.thana_name , Market_Size DESC;
 """,
             )
 
-        row = cursor.fetchall()
+        # rows = cursor.fetchall()
+        # desc = cursor.description
+        # columns = [desc for desc in cursor.description]
+        # result = []
+        # for row in rows:
+        #     row = dict(zip(columns, row))
+        #     result.append(row)
 
-        return Response(row)
+        # return Response(row)
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
 
 
 class CrownSummaryReportView(APIView):

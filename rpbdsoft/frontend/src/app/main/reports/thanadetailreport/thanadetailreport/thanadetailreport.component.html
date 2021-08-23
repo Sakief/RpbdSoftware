@@ -1,3 +1,15 @@
+<header class="header">
+  <h1>Overall Thana Report</h1>
+  <h2 class="headline">Thana Details Report</h2>
+</header>
+
+<div *ngFor="let data of rowData; let i = index">
+  <div *ngIf="i < 1">
+    <h4 class="district">District Name : {{ data.district_name }}</h4>
+    <h4 class="month">Month Name : {{ data.end_month }}</h4>
+  </div>
+</div>
+
 <ag-grid-angular
   style="width: 100%; height: 1000px"
   class="ag-theme-alpine"

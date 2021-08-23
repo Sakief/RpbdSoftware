@@ -10,6 +10,7 @@ import { ColumnApi, GridApi } from 'ag-grid-community';
 export class ThanadetailreportComponent implements OnInit {
   rowData: any;
   columnDefs: any;
+  thanadetailreports: any;
 
   private api!: GridApi;
   private columnApi!: ColumnApi;
@@ -39,6 +40,28 @@ export class ThanadetailreportComponent implements OnInit {
       {
         headerName: 'Thana Name',
         field: 'thana_name',
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
+
+      {
+        headerName: 'Mokam',
+        field: 'mokam',
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
+      {
+        headerName: 'Total Retail',
+        field: 'total_retail',
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
+      {
+        headerName: 'Market Size',
+        field: 'Market_Size',
         filter: true,
         resizable: true,
         sortable: true,

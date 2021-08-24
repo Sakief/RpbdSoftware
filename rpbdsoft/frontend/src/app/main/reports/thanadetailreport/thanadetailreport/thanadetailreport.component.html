@@ -1,6 +1,5 @@
 <header class="header">
   <h1>Overall Thana Report</h1>
-  <h2 class="headline">Thana Details Report</h2>
 </header>
 
 <div *ngFor="let data of rowData; let i = index">
@@ -10,11 +9,36 @@
   </div>
 </div>
 
+<h2>Thana Summary</h2>
+
 <ag-grid-angular
-  style="width: 100%; height: 1000px"
+  style="width: 100%; height: 400px; align-items: center"
   class="ag-theme-alpine"
   (gridReady)="onGridReady($event)"
   [columnDefs]="columnDefs"
   [rowData]="rowData"
+  [groupIncludeTotalFooter]="true"
+>
+</ag-grid-angular>
+
+<h2>Crown Summary</h2>
+
+<ag-grid-angular
+  style="width: 100%; height: 400px; align-items: center"
+  class="ag-theme-alpine"
+  (gridReady)="onGridReady($event)"
+  [columnDefs]="crownColumnDefs"
+  [rowData]="crownRowData"
+  [groupIncludeTotalFooter]="true"
+>
+</ag-grid-angular>
+
+<ag-grid-angular
+  style="width: 100%; height: 400px; align-items: center"
+  class="ag-theme-alpine"
+  (gridReady)="onGridReady($event)"
+  [columnDefs]="leadingColumnDefs"
+  [rowData]="leadingRowData"
+  [groupIncludeTotalFooter]="true"
 >
 </ag-grid-angular>

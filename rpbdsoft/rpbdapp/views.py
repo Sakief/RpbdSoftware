@@ -569,8 +569,6 @@ class RetailUpdateView(APIView):
 
 
 class ThanaDetailReportView(APIView):
-    # serializers = ThanaDetailReportSerializer()
-
     def get(self, request):
         with connection.cursor() as cursor:
             cursor.execute(
@@ -597,16 +595,6 @@ ORDER BY t.thana_name , Market_Size DESC;
 """,
             )
 
-        # rows = cursor.fetchall()
-        # desc = cursor.description
-        # columns = [desc for desc in cursor.description]
-        # result = []
-        # for row in rows:
-        #     row = dict(zip(columns, row))
-        #     result.append(row)
-
-        # return Response(row)
-
         def dictfetchall(cursor):
             "Return all rows from a cursor as a dict"
 
@@ -618,53 +606,124 @@ class CrownSummaryReportView(APIView):
     def get(self, request):
         with connection.cursor() as cursor:
             cursor.execute(
-                """SELECT A.Market_Size, B.thana_name, B.crown_presence_mokam, B.crown_retail,B.crown_sales, B.end_month, B.district_name
+                """SELECT 
+    A.Market_Size,
+    B.thana_name,
+    B.crown_presence_mokam,
+    B.crown_retail,
+    B.crown_sales,
+    B.end_month,
+    B.district_name,
+    concat(cast((B.crown_sales/A.Market_Size)*100 as decimal(10,2)),'%') as Crown_Share
 FROM
-(SELECT 
-    thana_name,
-    SUM(end_month_volume) AS Market_Size,
-    COUNT(DISTINCT market_code_id) as mokam,
-    COUNT(DISTINCT outlet_id) as total_retail,
-    end_month,
-    district_name
-FROM
-    brand ,
-    retail ,
-    profile ,
-    thana ,
-    district 
+    (SELECT 
+        thana_name,
+            SUM(end_month_volume) AS Market_Size,
+            COUNT(DISTINCT market_code_id) AS mokam,
+            COUNT(DISTINCT outlet_id) AS total_retail,
+            end_month,
+            district_name
+    FROM
+        brand, retail, profile, thana, district
+    WHERE
+        brand_code_id = brand_code
+            AND thana_code = thana_code_id
+            AND district_code = district_code_id
+            AND outlet_id = outlet_id_id
+    GROUP BY thana_code
+    ORDER BY thana_name , Market_Size DESC) AS A,
+    (SELECT DISTINCT
+        thana_name,
+            COUNT(DISTINCT market_code_id) AS crown_presence_mokam,
+            COUNT(DISTINCT outlet_id) AS crown_retail,
+            SUM(end_month_volume) AS crown_sales,
+            end_month,
+            district_name
+    FROM
+        brand, retail, profile, thana, district
+    WHERE
+        brand_code_id = '36'
+            AND thana_code = thana_code_id
+            AND district_code = district_code_id
+            AND outlet_id = outlet_id_id
+    GROUP BY thana_name , brand_code
+    ORDER BY thana_name) AS B
 WHERE
-    brand_code_id = brand_code
-        AND thana_code = thana_code_id
-        AND district_code = district_code_id
-        AND outlet_id = outlet_id_id
-GROUP BY thana_code
-ORDER BY thana_name , Market_Size DESC) as A,
-
-(SELECT DISTINCT
-    thana_name,
-    COUNT(DISTINCT market_code_id) AS crown_presence_mokam,
-    COUNT(DISTINCT outlet_id) AS crown_retail,
-    SUM(end_month_volume) AS crown_sales,
-    end_month,
-    district_name
-FROM
-    brand ,
-    retail ,
-    profile ,
-    thana ,
-    district 
-WHERE
-    brand_code_id = '36'
-        AND thana_code = thana_code_id
-        AND district_code = district_code_id
-        AND outlet_id = outlet_id_id
-GROUP BY thana_name , brand_code
-ORDER BY thana_name) as B
-
-WHERE A.thana_name = B.thana_name;
-"""
+    A.thana_name = B.thana_name;
+""",
             )
-        row = cursor.fetchall()
+        # row = cursor.fetchall()
 
-        return Response(row)
+        # return Response(row)
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class ThanaLeadingBrandReportView(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT 
+    X.Market_Size,
+    Y.thana_name,
+    Y.brand_name,
+    Y.LeadingBrandRetail,
+    Y.LeadingBrandSales,
+    X.end_month,
+    X.district_name,
+    concat(cast((Y.LeadingBrandSales/X.Market_Size)*100 as decimal(10,2)),'%') as Leading_brand_share
+FROM
+    (SELECT 
+        t.thana_name,
+            SUM(r.end_month_volume) AS Market_Size,
+            COUNT(DISTINCT market_code_id) AS mokam,
+            COUNT(DISTINCT outlet_id) AS total_retail,
+            r.end_month,
+            d.district_name
+    FROM
+        brand b, retail r, profile p, thana t, district d
+    WHERE
+        r.brand_code_id = b.brand_code
+            AND t.thana_code = p.thana_code_id
+            AND d.district_code = p.district_code_id
+            AND p.outlet_id = r.outlet_id_id
+    GROUP BY t.thana_code
+    ORDER BY t.thana_name , Market_Size DESC) AS X,
+    (SELECT 
+        thana_name,
+            brand_name,
+            LeadingBrandRetail,
+            MAX(LeadSale) AS LeadingBrandSales
+    FROM
+        (SELECT 
+        thana_name,
+            brand_name,
+            COUNT(DISTINCT outlet_id) AS LeadingBrandRetail,
+            SUM(end_month_volume) AS LeadSale,
+            r.end_month,
+            district_name
+    FROM
+        brand, thana, retail r, profile, district
+    WHERE
+        brand_code_id = brand_code
+            AND thana_code = thana_code_id
+            AND district_code = district_code_id
+            AND outlet_id = outlet_id_id
+    GROUP BY thana_code , brand_name
+    ORDER BY LeadSale DESC) AS leadvalue
+    GROUP BY thana_name) AS Y
+WHERE
+    X.thana_name = Y.thana_name
+
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])

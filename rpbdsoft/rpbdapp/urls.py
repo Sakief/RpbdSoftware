@@ -35,4 +35,5 @@ urlpatterns = [
     # path("api/report-jasper/", views.ReportJasper.as_view()),
     path("api/report/thanadetails", views.ThanaDetailReportView.as_view()),
     path("api/report/crownsummary", views.CrownSummaryReportView.as_view()),
+    path("api/report/leadingbrandsummary", views.ThanaLeadingBrandReportView.as_view()),
 ]

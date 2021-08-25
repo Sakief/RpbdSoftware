@@ -727,3 +727,56 @@ WHERE
 
         columns = [col[0] for col in cursor.description]
         return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class DistrictSaleVolumeView(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT 
+    Y.brand_name,
+    Y.start_month_sale_volume,
+    Y.end_month_sale_volume,
+    Y.start_month,
+    Y.end_month,
+    CONCAT(CAST((Y.end_month_sale_volume / X.total_end_month) * 100
+                AS DECIMAL (10 , 2 )),
+            '%') AS end_month_ms,
+    CONCAT(CAST((Y.start_month_sale_volume / X.total_start_month) * 100
+                AS DECIMAL (10 , 2 )),
+            '%') AS start_month_ms
+FROM
+    (SELECT 
+        COUNT(DISTINCT (outlet_id_id)) AS 'Total Visited Retail',
+            COUNT(DISTINCT (brand_code_id)) AS 'Total No of brands',
+            d.district_name,
+            SUM(r.start_month_volume) AS total_start_month,
+            SUM(r.end_month_volume) AS total_end_month,
+            r.start_month,
+            r.end_month
+    FROM
+        retail r, district d, profile p
+    WHERE
+        d.district_code = p.district_code_id
+            AND r.outlet_id_id = p.outlet_id) AS X,
+    (SELECT 
+        b.brand_name,
+            SUM(r.start_month_volume) AS start_month_sale_volume,
+            SUM(r.end_month_volume) AS end_month_sale_volume,
+            r.start_month,
+            r.end_month
+    FROM
+        retail r, brand b, profile p
+    WHERE
+        r.brand_code_id = b.brand_code
+            AND p.outlet_id = r.outlet_id_id
+    GROUP BY brand_code_id
+    ORDER BY SUM(r.start_month_volume) DESC) AS Y;
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])

@@ -36,4 +36,5 @@ urlpatterns = [
     path("api/report/thanadetails", views.ThanaDetailReportView.as_view()),
     path("api/report/crownsummary", views.CrownSummaryReportView.as_view()),
     path("api/report/leadingbrandsummary", views.ThanaLeadingBrandReportView.as_view()),
+    path("api/report/districtsalevolume", views.DistrictSaleVolumeView.as_view()),
 ]

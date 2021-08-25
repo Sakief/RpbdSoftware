@@ -66,6 +66,7 @@ import { ReportComponent } from './report/report.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThanadetailreportComponent } from './reports/thanadetailreport/thanadetailreport/thanadetailreport.component';
 import { Thanadetailservice } from '../services/thanadetailreport.service';
+import { DistrictreportComponent } from './reports/districtsummaryreport/districtreport/districtreport.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -175,6 +176,7 @@ const routes: Routes = [
     ReportComponent,
     NavbarComponent,
     ThanadetailreportComponent,
+    DistrictreportComponent,
   ],
   imports: [
     CommonModule,

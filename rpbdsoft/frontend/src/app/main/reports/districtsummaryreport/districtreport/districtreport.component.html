@@ -1,1 +1,24 @@
-<p>districtreport works!</p>
+<div class="row">
+  <div class="column">
+    <ag-grid-angular
+      style="width: 90%; height: 100%; align-items: center"
+      class="ag-theme-alpine"
+      (gridReady)="onGridReady($event)"
+      [columnDefs]="districtsalesColumnDefs"
+      [rowData]="districtsalesrowData"
+      [groupIncludeTotalFooter]="true"
+    >
+    </ag-grid-angular>
+  </div>
+  <div class="column">
+    <ag-grid-angular
+      style="width: 40%; height: 100%"
+      class="ag-theme-alpine"
+      (gridReady)="onGridReady($event)"
+      [columnDefs]="districtsalesColumnDefs"
+      [rowData]="districtsalesrowData"
+      [groupIncludeTotalFooter]="true"
+    >
+    </ag-grid-angular>
+  </div>
+</div>

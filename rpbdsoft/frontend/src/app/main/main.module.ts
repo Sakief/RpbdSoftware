@@ -138,7 +138,7 @@ const routes: Routes = [
     path: 'reports',
     children: [
       { path: 'thanadetailreport', component: ThanadetailreportComponent },
-      { path: 'disrictreport', component: DistrictReportComponent },
+      { path: 'districtreport', component: DistrictReportComponent },
     ],
   },
 ];

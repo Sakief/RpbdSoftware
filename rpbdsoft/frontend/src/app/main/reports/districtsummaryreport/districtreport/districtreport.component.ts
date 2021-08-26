@@ -19,6 +19,7 @@ export class DistrictReportComponent implements OnInit {
   constructor(private districtreportservice: DistrictReportService) {
     this.districtsalesColumnDefs = this.DistrictSalesReport();
   }
+
   ngOnInit(): void {
     this.districtreportservice.getDistrictReport().subscribe(
       (districtreports) => {
@@ -43,6 +44,15 @@ export class DistrictReportComponent implements OnInit {
         filter: true,
         resizable: true,
         sortable: true,
+      },
+
+      {
+        headerName: 'Sales Volume',
+        children: [
+          {
+            field: 'end_month',
+          },
+        ],
       },
     ];
   }

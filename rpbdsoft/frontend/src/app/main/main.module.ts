@@ -67,6 +67,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ThanadetailreportComponent } from './reports/thanadetailreport/thanadetailreport/thanadetailreport.component';
 import { Thanadetailservice } from '../services/thanadetailreport.service';
 import { DistrictReportComponent } from './reports/districtsummaryreport/districtreport/districtreport.component';
+import { DistrictretailsComponent } from './reports/districtsummaryreport/districtretails/districtretails/districtretails.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -139,6 +140,7 @@ const routes: Routes = [
     children: [
       { path: 'thanadetailreport', component: ThanadetailreportComponent },
       { path: 'districtreport', component: DistrictReportComponent },
+      { path: 'districtretailsreport', component: DistrictretailsComponent },
     ],
   },
 ];
@@ -178,6 +180,7 @@ const routes: Routes = [
     NavbarComponent,
     ThanadetailreportComponent,
     DistrictReportComponent,
+    DistrictretailsComponent,
   ],
   imports: [
     CommonModule,

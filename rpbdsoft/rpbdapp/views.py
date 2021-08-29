@@ -781,3 +781,68 @@ FROM
 
         columns = [col[0] for col in cursor.description]
         return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class DistrictEndRetailCoverage(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT 
+	b.brand_name as brand_name,
+	r.end_month as end_month,
+    COUNT(id) as end_retail_counts ,
+	d.district_name
+FROM
+    retail r,
+    brand b,
+    district d,
+    profile p
+WHERE
+		end_month_volume > 0
+        AND r.brand_code_id = b.brand_code
+		AND d.district_code = p.district_code_id
+        AND r.outlet_id_id = p.outlet_id
+
+GROUP BY
+		brand_code;
+        
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class DistrictStartRetailCoverage(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """
+SELECT 
+    b.brand_name AS brand_name,
+    r.start_month,
+    COUNT(id) AS start_retail_counts,
+    d.district_name
+FROM
+    retail r,
+    brand b,
+    district d,
+    profile p
+WHERE
+    start_month_volume > 0
+        AND r.brand_code_id = b.brand_code
+        AND d.district_code = p.district_code_id
+        AND r.outlet_id_id = p.outlet_id
+GROUP BY brand_code;
+        
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])

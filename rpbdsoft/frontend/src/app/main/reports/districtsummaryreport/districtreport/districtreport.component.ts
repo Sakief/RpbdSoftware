@@ -47,10 +47,45 @@ export class DistrictReportComponent implements OnInit {
       },
 
       {
-        headerName: 'Sales Volume',
+        headerName: 'End Month Sales Volume/Share',
+
         children: [
           {
+            headerName: 'End Month',
             field: 'end_month',
+          },
+          {
+            headerName: 'Sales',
+            field: 'end_month_sale_volume',
+            sortable: true,
+            resizable: true,
+          },
+          {
+            headerName: 'Share',
+            field: 'end_month_ms',
+            sortable: true,
+            resizable: true,
+          },
+        ],
+      },
+      {
+        headerName: 'Start Month Sales Volume',
+        children: [
+          {
+            headerName: 'Start Month',
+            field: 'start_month',
+          },
+          {
+            headerName: 'Sales',
+            field: 'start_month_sale_volume',
+            sortable: true,
+            resizable: true,
+          },
+          {
+            headerName: 'Share',
+            field: 'start_month_ms',
+            sortable: true,
+            resizable: true,
           },
         ],
       },

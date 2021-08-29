@@ -734,6 +734,7 @@ class DistrictSaleVolumeView(APIView):
         with connection.cursor() as cursor:
             cursor.execute(
                 """SELECT 
+    X.district_name,
     Y.brand_name,
     Y.start_month_sale_volume,
     Y.end_month_sale_volume,

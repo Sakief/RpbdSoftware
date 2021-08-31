@@ -59,6 +59,8 @@ export class DistrictReportComponent implements OnInit {
             field: 'end_month_sale_volume',
             sortable: true,
             resizable: true,
+            aggFunc: 'sum',
+            valueParser: 'Number(newValue)',
           },
           {
             headerName: 'Share',
@@ -80,6 +82,8 @@ export class DistrictReportComponent implements OnInit {
             field: 'start_month_sale_volume',
             sortable: true,
             resizable: true,
+            aggFunc: 'sum',
+            valueParser: 'Number(newValue)',
           },
           {
             headerName: 'Share',

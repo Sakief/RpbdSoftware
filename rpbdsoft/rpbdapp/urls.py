@@ -41,4 +41,11 @@ urlpatterns = [
     path(
         "api/report/districtstartretails", views.DistrictStartRetailCoverage.as_view()
     ),
+    path(
+        "api/report/districtstartretails", views.DistrictStartRetailCoverage.as_view()
+    ),
+    path(
+        "api/report/thanasalesvolume",
+        views.ThanaSalesVolumeView.as_view(),
+    ),
 ]

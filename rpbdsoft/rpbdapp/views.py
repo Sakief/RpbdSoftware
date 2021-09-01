@@ -846,3 +846,61 @@ GROUP BY brand_code;
 
         columns = [col[0] for col in cursor.description]
         return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class ThanaSalesVolumeView(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT 
+    X.brand_name,
+    X.volume_start,
+    X.volume_end,
+    X.thana_name,
+    X.start_month,
+    X.end_month,
+    CONCAT(CAST((X.volume_end / Y.End_Market_Size) * 100 AS DECIMAL (10 , 2 )),
+            '%') AS end_month_ms,
+	CONCAT(CAST((X.volume_start / Y.Start_Market_Size) * 100 AS DECIMAL (10 , 2 )),
+            '%') AS start_month_ms
+FROM
+    (SELECT 
+        b.brand_name,
+            SUM(r.start_month_volume) AS volume_start,
+            SUM(r.end_month_volume) AS volume_end,
+            t.thana_name,
+            r.start_month,
+            r.end_month
+    FROM
+        brand b, retail r, profile p, thana t, district d
+    WHERE
+        r.brand_code_id = b.brand_code
+            AND t.thana_code = p.thana_code_id
+            AND d.district_code = p.district_code_id
+            AND p.outlet_id = r.outlet_id_id
+    GROUP BY brand_code_id , thana_code_id , district_code_id
+    ORDER BY t.thana_name , volume_end DESC) AS X,
+    (SELECT 
+        t.thana_name,
+            SUM(r.end_month_volume) AS End_Market_Size,
+            SUM(r.start_month_volume) AS Start_Market_Size
+    FROM
+        brand b, retail r, profile p, thana t, district d
+    WHERE
+        r.brand_code_id = b.brand_code
+            AND t.thana_code = p.thana_code_id
+            AND d.district_code = p.district_code_id
+            AND p.outlet_id = r.outlet_id_id
+    GROUP BY t.thana_code
+    ORDER BY t.thana_name) AS Y
+    
+WHERE X.thana_name = Y.thana_name;
+    
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])

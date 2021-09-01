@@ -652,9 +652,6 @@ WHERE
     A.thana_name = B.thana_name;
 """,
             )
-        # row = cursor.fetchall()
-
-        # return Response(row)
 
         def dictfetchall(cursor):
             "Return all rows from a cursor as a dict"
@@ -896,6 +893,75 @@ FROM
     
 WHERE X.thana_name = Y.thana_name;
     
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class ThanaEndRetailCoverage(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT 
+    b.brand_name AS brand_name,
+    r.end_month,
+    COUNT(id) AS end_retail_counts,
+    t.thana_name,
+    d.district_name
+FROM
+    retail r,
+    brand b,
+    district d,
+    profile p,
+    thana t
+WHERE
+    end_month_volume > 0
+        AND r.brand_code_id = b.brand_code
+        AND d.district_code = p.district_code_id
+        AND t.thana_code = p.thana_code_id
+        AND r.outlet_id_id = p.outlet_id
+        
+GROUP BY brand_name, thana_code;
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class ThanaStartRetailCoverage(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """SELECT 
+    b.brand_name AS brand_name,
+    r.start_month,
+    COUNT(id) AS start_retail_counts,
+    t.thana_name,
+    d.district_name
+FROM
+    retail r,
+    brand b,
+    district d,
+    profile p,
+    thana t
+WHERE
+    start_month_volume > 0
+        AND r.brand_code_id = b.brand_code
+        AND d.district_code = p.district_code_id
+        AND t.thana_code = p.thana_code_id
+        AND r.outlet_id_id = p.outlet_id
+        
+GROUP BY brand_name, thana_code;
+
 """,
             )
 

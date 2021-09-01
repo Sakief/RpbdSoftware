@@ -1,0 +1,35 @@
+<header class="header">
+  <h1>Month-wise Thana Retails Count Report</h1>
+</header>
+
+<div *ngFor="let data of startretailsrowData; let i = index">
+  <div *ngIf="i < 1">
+    <h4 class="district">District Name : {{ data.district_name }}</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <ag-grid-angular
+      style="width: 100%; height: 100%; justify-content: center"
+      class="ag-theme-alpine"
+      (gridReady)="onGridReady($event)"
+      [columnDefs]="endretailscolumnDefs"
+      [rowData]="endretailsrowData"
+      [groupIncludeTotalFooter]="true"
+    >
+    </ag-grid-angular>
+  </div>
+
+  <div class="column">
+    <ag-grid-angular
+      style="width: 100%; height: 100%; justify-content: center"
+      class="ag-theme-alpine"
+      (gridReady)="onGridReady($event)"
+      [columnDefs]="startretailscolumnDefs"
+      [rowData]="startretailsrowData"
+      [groupIncludeTotalFooter]="true"
+    >
+    </ag-grid-angular>
+  </div>
+</div>

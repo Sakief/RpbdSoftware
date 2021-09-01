@@ -42,10 +42,9 @@ urlpatterns = [
         "api/report/districtstartretails", views.DistrictStartRetailCoverage.as_view()
     ),
     path(
-        "api/report/districtstartretails", views.DistrictStartRetailCoverage.as_view()
-    ),
-    path(
         "api/report/thanasalesvolume",
         views.ThanaSalesVolumeView.as_view(),
     ),
+    path("api/report/thanaendretails", views.ThanaEndRetailCoverage.as_view()),
+    path("api/report/thanastartretails", views.ThanaStartRetailCoverage.as_view()),
 ]

@@ -70,6 +70,7 @@ import { DistrictReportComponent } from './reports/districtsummaryreport/distric
 import { DistrictretailsComponent } from './reports/districtsummaryreport/districtretails/districtretails/districtretails.component';
 import { ThanasalesComponent } from './reports/thanasummaryreport/thanasalesreport/thanasales/thanasales.component';
 import { ThanaretailsComponent } from './reports/thanaretails/thanaretails/thanaretails.component';
+import { MarketSalesComponent } from './reports/marketsalessummary/market-sales/market-sales.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -145,6 +146,7 @@ const routes: Routes = [
       { path: 'districtretailsreport', component: DistrictretailsComponent },
       { path: 'thanasalesrport', component: ThanasalesComponent },
       { path: 'thanaretails', component: ThanaretailsComponent },
+      { path: 'mokamsalesreport', component: MarketSalesComponent },
     ],
   },
 ];
@@ -187,6 +189,7 @@ const routes: Routes = [
     DistrictretailsComponent,
     ThanasalesComponent,
     ThanaretailsComponent,
+    MarketSalesComponent,
   ],
   imports: [
     CommonModule,

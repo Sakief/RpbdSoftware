@@ -1,9 +1,13 @@
+<button (click)="onBtPrint()">Print</button>
+
 <ag-grid-angular
   style="width: 100%; height: 100%; justify-content: center"
+  id="myGrid"
   class="ag-theme-alpine"
   (gridReady)="onGridReady($event)"
   [columnDefs]="mokamsalesColumnDefs"
   [rowData]="mokamsalesrowData"
+  [animateRows]="true"
   [groupIncludeTotalFooter]="true"
 >
 </ag-grid-angular>

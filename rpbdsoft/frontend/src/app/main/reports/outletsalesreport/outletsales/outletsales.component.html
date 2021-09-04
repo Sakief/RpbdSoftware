@@ -1,1 +1,11 @@
-<p>outletsales works!</p>
+<ag-grid-angular
+  style="width: 100%; height: 100%; justify-content: center"
+  id="myGrid"
+  class="ag-theme-alpine"
+  (gridReady)="onGridReady($event)"
+  [columnDefs]="outletsalesColumnDefs"
+  [rowData]="outletsalesrowData"
+  [animateRows]="true"
+  [groupIncludeTotalFooter]="true"
+>
+</ag-grid-angular>

@@ -148,6 +148,10 @@ const routes: Routes = [
       { path: 'thanasalesrport', component: ThanasalesComponent },
       { path: 'thanaretails', component: ThanaretailsComponent },
       { path: 'mokamsalesreport', component: MarketSalesComponent },
+      {
+        path: 'outletsalesreport',
+        component: OutletsalesComponent,
+      },
     ],
   },
 ];

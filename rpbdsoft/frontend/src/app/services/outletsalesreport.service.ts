@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class MokamSalesReportService {
+export class OutletSalesReportService {
   outletsalesUrl = 'http://127.0.0.1:8000/api/report/outletsalesvolume';
 
   httpheaders = {

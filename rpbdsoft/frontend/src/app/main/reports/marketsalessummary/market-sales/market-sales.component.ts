@@ -53,12 +53,14 @@ export class MarketSalesComponent implements OnInit {
         headerName: 'Thana Name',
         field: 'thana_name',
         rowGroup: true,
+        hide: true,
       },
 
       {
         headerName: 'Market',
         field: 'market_name',
         rowGroup: true,
+        hide: true,
       },
       {
         headerName: 'Brand Name',
@@ -72,7 +74,7 @@ export class MarketSalesComponent implements OnInit {
 
         children: [
           {
-            headerName: 'MonthName',
+            headerName: 'Month Name',
             field: 'end_month',
           },
           {

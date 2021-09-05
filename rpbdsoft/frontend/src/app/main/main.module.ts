@@ -72,6 +72,7 @@ import { ThanasalesComponent } from './reports/thanasummaryreport/thanasalesrepo
 import { ThanaretailsComponent } from './reports/thanaretails/thanaretails/thanaretails.component';
 import { MarketSalesComponent } from './reports/marketsalessummary/market-sales/market-sales.component';
 import { OutletsalesComponent } from './reports/outletsalesreport/outletsales/outletsales.component';
+import { OverallmokamsummaryreportComponent } from './reports/overallmokamsummaryreport/overallmokamsummaryreport.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -152,6 +153,10 @@ const routes: Routes = [
         path: 'outletsalesreport',
         component: OutletsalesComponent,
       },
+      {
+        path: 'overallmokamreports',
+        component: OverallmokamsummaryreportComponent,
+      },
     ],
   },
 ];
@@ -196,6 +201,7 @@ const routes: Routes = [
     ThanaretailsComponent,
     MarketSalesComponent,
     OutletsalesComponent,
+    OverallmokamsummaryreportComponent,
   ],
   imports: [
     CommonModule,

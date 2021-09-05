@@ -72,6 +72,7 @@ export class OutletsalesComponent implements OnInit {
           {
             headerName: 'Month Name',
             field: 'end_month',
+            filter: true,
           },
           {
             headerName: 'Sales',

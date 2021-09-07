@@ -8,6 +8,18 @@
 
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="20px">
+        <span class="report">
+          <div>
+            <button mat-button [matMenuTriggerFor]="belowMenu">
+              <mat-icon>summarize</mat-icon>
+            </button>
+            <mat-menu #belowMenu="matMenu" yPosition="below">
+              <button mat-menu-item routerLink="/reports/districtreport">
+                District Report
+              </button>
+            </mat-menu>
+          </div>
+        </span>
         <li>
           <button mat-icon-button>
             <mat-icon>settings</mat-icon>

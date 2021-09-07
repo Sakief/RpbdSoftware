@@ -49,6 +49,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -73,6 +74,8 @@ import { ThanaretailsComponent } from './reports/thanaretails/thanaretails/thana
 import { MarketSalesComponent } from './reports/marketsalessummary/market-sales/market-sales.component';
 import { OutletsalesComponent } from './reports/outletsalesreport/outletsales/outletsales.component';
 import { OverallmokamsummaryreportComponent } from './reports/overallmokamsummaryreport/overallmokamsummaryreport.component';
+import { HeaderComponent } from './header/header.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -202,6 +205,8 @@ const routes: Routes = [
     MarketSalesComponent,
     OutletsalesComponent,
     OverallmokamsummaryreportComponent,
+    HeaderComponent,
+    SidenavComponent,
   ],
   imports: [
     CommonModule,
@@ -227,8 +232,9 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatExpansionModule,
+    FlexLayoutModule,
   ],
-  exports: [MatSidenavModule, ReactiveFormsModule],
+  exports: [MatSidenavModule, ReactiveFormsModule, MatTreeModule],
   providers: [
     DivisionService,
     DistrictService,

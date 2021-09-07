@@ -102,6 +102,7 @@ export class OverallmokamsummaryreportComponent implements OnInit {
         field: 'thana_name',
         filter: true,
         resizable: true,
+        rowGroup: true,
       },
 
       {

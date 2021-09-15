@@ -40,6 +40,7 @@ export class ProfileGridComponent implements OnInit {
     //     this.createNewDivision.emit();
     // }
   }
+  // before grid initialised
 
   // one grid initialisation, grap the APIs and auto resize the columns to fit the available space
   onGridReady(params: { api: GridApi; columnApi: ColumnApi }): void {

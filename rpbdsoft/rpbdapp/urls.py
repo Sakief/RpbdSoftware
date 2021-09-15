@@ -1,7 +1,7 @@
 from django.urls import path
 from django.urls import path, include
 from rpbdapp import views
-
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 # router =  routers.DefaultRouters()
 # router.register('')
@@ -55,4 +55,6 @@ urlpatterns = [
         "api/report/leadingbrandmokamsummary",
         views.LeadingBrandMokamSummaryView.as_view(),
     ),
+    path(r"api-token-auth/", obtain_jwt_token),
+    path(r"api-token-refresh/", refresh_jwt_token),
 ]

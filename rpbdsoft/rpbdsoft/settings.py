@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import time
+from datetime import datetime, date, time, timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -139,13 +141,20 @@ STATIC_URL = "/static/"
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
     "DEFAULT_PERMISSION_CLASSES": [
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         "rest_framework.permissions.AllowAny",
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
     ],
+    "DATE_INPUT_FORMATS": ["%d-%m-%Y"],
 }
 
 CORS_ALLOWED_ORIGINS = [
@@ -153,3 +162,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:9000",
 ]
+
+
+LOGIN_REDIRECT_URL = "/"
+# AUTH_USER_MODEL = "rpbdapp.User"
+
+JWT_AUTH = {
+    "JWT_ALLOW_REFRESE": True,
+    "JWT_EXPIRATION_DELTA": timedelta(seconds=3600),
+}

@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
 
 
 class Division(models.Model):
@@ -106,6 +108,7 @@ class Profile(models.Model):
     zone_code = models.ForeignKey(Zone, on_delete=models.CASCADE)
     thana_code = models.ForeignKey(Thana, on_delete=models.CASCADE)
     district_code = models.ForeignKey(District, on_delete=models.CASCADE)
+    division_code = models.ForeignKey(Division, null=True, on_delete=models.CASCADE)
 
     manager_name = models.CharField(
         verbose_name="Manager/Incharge Name", max_length=50, blank=True, null=True
@@ -246,12 +249,9 @@ class Merchandising(models.Model):
 
 class Retail(models.Model):
     outlet_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    start_month = models.CharField(
-        verbose_name="Start Month", max_length=30, null=True, blank=True
-    )
-    end_month = models.CharField(
-        verbose_name="End Month", max_length=30, null=True, blank=True
-    )
+    start_month = models.DateField(verbose_name="Start Month", null=True, blank=True)
+
+    end_month = models.DateField(verbose_name="End Month", null=True, blank=True)
     visit_year = models.CharField(
         verbose_name="Visit Year", max_length=10, null=True, blank=True
     )

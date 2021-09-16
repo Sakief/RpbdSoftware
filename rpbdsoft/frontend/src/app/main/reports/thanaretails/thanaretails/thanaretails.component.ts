@@ -54,6 +54,12 @@ export class ThanaretailsComponent implements OnInit {
         headerName: 'End Month Retail Counts',
         children: [
           {
+            headerName: 'District Name',
+            field: 'district_name',
+            rowGroup: true,
+            filter: true,
+          },
+          {
             headerName: 'Thana Name',
             field: 'thana_name',
             rowGroup: true,
@@ -69,7 +75,7 @@ export class ThanaretailsComponent implements OnInit {
           {
             headerName: 'Month',
             field: 'end_month',
-            flter: true,
+            filter: true,
             resizable: true,
           },
           {
@@ -89,8 +95,15 @@ export class ThanaretailsComponent implements OnInit {
         headerName: 'Start Month Retail Counts',
         children: [
           {
+            headerName: 'District Name',
+            field: 'district_name',
+            rowGroup: true,
+            filter: true,
+          },
+          {
             headerName: 'Thana Name',
             field: 'thana_name',
+            filter: true,
             rowGroup: true,
             hide: true,
           },
@@ -104,7 +117,7 @@ export class ThanaretailsComponent implements OnInit {
           {
             headerName: 'Month',
             field: 'start_month',
-            flter: true,
+            filter: true,
             resizable: true,
           },
           {

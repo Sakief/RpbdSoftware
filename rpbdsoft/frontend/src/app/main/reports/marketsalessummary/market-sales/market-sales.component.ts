@@ -50,8 +50,15 @@ export class MarketSalesComponent implements OnInit {
   private MokamSalesReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        rowGroup: true,
+        filter: true,
+      },
+      {
         headerName: 'Thana Name',
         field: 'thana_name',
+        filter: true,
         rowGroup: true,
         hide: true,
       },
@@ -76,6 +83,7 @@ export class MarketSalesComponent implements OnInit {
           {
             headerName: 'Month Name',
             field: 'end_month',
+            filter: true,
           },
           {
             headerName: 'Sales',

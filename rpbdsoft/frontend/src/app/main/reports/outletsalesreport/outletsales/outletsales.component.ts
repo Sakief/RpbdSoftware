@@ -40,6 +40,13 @@ export class OutletsalesComponent implements OnInit {
   private OutletSalesReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        rowGroup: true,
+        filter: true,
+        resizable: true,
+      },
+      {
         headerName: 'Thana Name',
         field: 'thana_name',
         rowGroup: true,

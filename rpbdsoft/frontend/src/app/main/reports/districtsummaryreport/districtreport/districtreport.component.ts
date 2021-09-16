@@ -39,6 +39,12 @@ export class DistrictReportComponent implements OnInit {
   private DistrictSalesReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        filter: true,
+        rowGroup: true,
+      },
+      {
         headerName: 'Brand Name',
         field: 'brand_name',
         filter: true,

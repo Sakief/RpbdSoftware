@@ -39,8 +39,16 @@ export class ThanasalesComponent implements OnInit {
   private ThanaSalesReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        rowGroup: true,
+        hide: true,
+        filter: true,
+      },
+      {
         headerName: 'Thana Name',
         field: 'thana_name',
+        filter: true,
         rowGroup: true,
         groupHeader: 'Thana',
         hide: true,

@@ -1,12 +1,8 @@
+<app-header></app-header>
+
 <header class="header">
   <h1>Month-wise District Retails Count Report</h1>
 </header>
-
-<div *ngFor="let data of startretailsrowData; let i = index">
-  <div *ngIf="i < 1">
-    <h4 class="district">District Name : {{ data.district_name }}</h4>
-  </div>
-</div>
 
 <div class="row">
   <div class="column">

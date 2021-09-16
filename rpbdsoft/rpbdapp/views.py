@@ -735,8 +735,8 @@ class DistrictSaleVolumeView(APIView):
     Y.brand_name,
     Y.start_month_sale_volume,
     Y.end_month_sale_volume,
-    Y.start_month,
-    Y.end_month,
+    date_format(Y.start_month,'%M-%Y') as start_month,
+    date_format(Y.end_month,'%M-%Y') as end_month,
     CONCAT(CAST((Y.end_month_sale_volume / X.total_end_month) * 100
                 AS DECIMAL (10 , 2 )),
             '%') AS end_month_ms,
@@ -786,7 +786,7 @@ class DistrictEndRetailCoverage(APIView):
             cursor.execute(
                 """SELECT 
 	b.brand_name as brand_name,
-	r.end_month as end_month,
+	date_format(r.end_month,'%M-%Y') as end_month,
     COUNT(id) as end_retail_counts ,
 	d.district_name
 FROM
@@ -820,7 +820,7 @@ class DistrictStartRetailCoverage(APIView):
                 """
 SELECT 
     b.brand_name AS brand_name,
-    r.start_month,
+    date_format(r.start_month,'%M-%Y') as start_month,
     COUNT(id) AS start_retail_counts,
     d.district_name
 FROM
@@ -850,12 +850,13 @@ class ThanaSalesVolumeView(APIView):
         with connection.cursor() as cursor:
             cursor.execute(
                 """SELECT 
+	X.district_name,
     X.brand_name,
     X.volume_start,
     X.volume_end,
     X.thana_name,
-    X.start_month,
-    X.end_month,
+    date_format(X.start_month, '%M-%Y') as start_month,
+    date_format(X.end_month, '%M-%Y') as end_month,
     CONCAT(CAST((X.volume_end / Y.End_Market_Size) * 100 AS DECIMAL (10 , 2 )),
             '%') AS end_month_ms,
 	CONCAT(CAST((X.volume_start / Y.Start_Market_Size) * 100 AS DECIMAL (10 , 2 )),
@@ -866,6 +867,7 @@ FROM
             SUM(r.start_month_volume) AS volume_start,
             SUM(r.end_month_volume) AS volume_end,
             t.thana_name,
+            d.district_name,
             r.start_month,
             r.end_month
     FROM
@@ -909,7 +911,7 @@ class ThanaEndRetailCoverage(APIView):
             cursor.execute(
                 """SELECT 
     b.brand_name AS brand_name,
-    r.end_month,
+    date_format(r.end_month,'%M-%Y') as end_month,
     COUNT(id) AS end_retail_counts,
     t.thana_name,
     d.district_name
@@ -943,7 +945,7 @@ class ThanaStartRetailCoverage(APIView):
             cursor.execute(
                 """SELECT 
     b.brand_name AS brand_name,
-    r.start_month,
+    date_format(r.start_month,'%M-%Y') as start_month,
     COUNT(id) AS start_retail_counts,
     t.thana_name,
     d.district_name
@@ -977,13 +979,14 @@ class MarketSalesVolumeView(APIView):
         with connection.cursor() as cursor:
             cursor.execute(
                 """SELECT 
+    X.district_name,
     X.thana_name,
     X.market_name,
     X.brand_name,
     X.volume_start,
     X.volume_end,
-    X.start_month,
-    X.end_month,
+    date_format(X.start_month,'%M-%Y') as start_month, 
+    date_format(X.end_month,'%M-%Y') as end_month,
     CONCAT(CAST((X.volume_end / Y.End_Market_Size) * 100 AS DECIMAL (10 , 2 )),
             '%') AS end_month_ms,
     CONCAT(CAST((X.volume_start / Y.Start_Market_Size) * 100
@@ -997,6 +1000,7 @@ FROM
             t.thana_name,
             r.start_month,
             r.end_month,
+            d.district_name,
             m.market_name
     FROM
         brand b, retail r, profile p, thana t, district d, market m
@@ -1046,14 +1050,15 @@ class OutletSalesVolumeView(APIView):
         with connection.cursor() as cursor:
             cursor.execute(
                 """SELECT 
+    X.district_name,
     X.thana_name,
     X.market_name,
     X.outlet_name,
     X.brand_name,
     X.volume_start,
     X.volume_end,
-    X.start_month,
-    X.end_month,
+    date_format(X.start_month,'%M-%Y') as start_month,
+    date_format(X.end_month,'%M-%Y') as end_month,
     CONCAT(CAST((X.volume_end / Y.End_Market_Size) * 100 AS DECIMAL (10 , 2 )),
             '%') AS end_month_ms,
     CONCAT(CAST((X.volume_start / Y.Start_Market_Size) * 100
@@ -1066,6 +1071,7 @@ FROM
             SUM(r.end_month_volume) AS volume_end,
             t.thana_name,
             p.outlet_name,
+            d.district_name,
             r.start_month,
             r.end_month,
             m.market_name

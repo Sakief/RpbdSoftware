@@ -55,6 +55,14 @@ export class DistrictretailsComponent implements OnInit {
         headerName: 'End Month Retail Counts',
         children: [
           {
+            headerName: 'District Name',
+            field: 'district_name',
+            filter: true,
+            resizable: true,
+            sortable: true,
+            rowGroup: true,
+          },
+          {
             headerName: 'Brand Name',
             field: 'brand_name',
             filter: true,
@@ -83,6 +91,14 @@ export class DistrictretailsComponent implements OnInit {
       {
         headerName: 'Start Month Retail Counts',
         children: [
+          {
+            headerName: 'District Name',
+            field: 'district_name',
+            filter: true,
+            resizable: true,
+            sortable: true,
+            rowGroup: true,
+          },
           {
             headerName: 'Brand Name',
             field: 'brand_name',

@@ -1,12 +1,8 @@
+<app-header></app-header>
+
 <header class="header">
   <h1>Monthswise District Sales Report</h1>
 </header>
-
-<div *ngFor="let data of districtsalesrowData; let i = index">
-  <div *ngIf="i < 1">
-    <h4 class="district">District Name : {{ data.district_name }}</h4>
-  </div>
-</div>
 
 <ag-grid-angular
   style="width: 100%; height: 100%; justify-content: center"

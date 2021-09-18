@@ -64,11 +64,24 @@ export class OverallmokamsummaryreportComponent implements OnInit {
   private OverallMokamDetailsReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        resizable: true,
+        filter: true,
+        rowGroup: true,
+      },
+      {
         headerName: 'Thana Name',
         field: 'thana_name',
         resizable: true,
         sortable: true,
         rowGroup: true,
+      },
+      {
+        headerName: 'Month',
+        field: 'end_month',
+        filter: true,
+        resizable: true,
       },
 
       {
@@ -98,6 +111,12 @@ export class OverallmokamsummaryreportComponent implements OnInit {
   private OverallCrownMokamDetailsReport() {
     return [
       {
+        headerName: 'District',
+        field: 'district_name',
+        filter: true,
+        rowGroup: true,
+      },
+      {
         headerName: 'Thana',
         field: 'thana_name',
         filter: true,
@@ -109,6 +128,12 @@ export class OverallmokamsummaryreportComponent implements OnInit {
         headerName: 'Mokam',
         field: 'market_name',
         resizable: true,
+      },
+      {
+        headerName: 'Month',
+        field: 'end_month',
+        resizable: true,
+        filter: true,
       },
       {
         headerName: 'Retail',
@@ -140,8 +165,16 @@ export class OverallmokamsummaryreportComponent implements OnInit {
   private OverallLeadingMokamReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        rowGroup: true,
+        resizable: true,
+        filter: true,
+      },
+      {
         headerName: 'Thana',
         field: 'thana_name',
+        filter: true,
         rowGroup: true,
         resizable: true,
       },
@@ -150,6 +183,13 @@ export class OverallmokamsummaryreportComponent implements OnInit {
         headerName: 'Market',
         field: 'market_name',
         resizable: true,
+        filter: true,
+      },
+      {
+        headerName: 'Month',
+        field: 'end_month',
+        resizable: true,
+        filter: true,
       },
 
       {

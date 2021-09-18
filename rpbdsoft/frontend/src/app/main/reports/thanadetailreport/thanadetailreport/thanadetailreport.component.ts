@@ -64,6 +64,12 @@ export class ThanadetailreportComponent implements OnInit {
   private ThanaDetailsReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        filter: true,
+        rowGroup: true,
+      },
+      {
         headerName: 'Thana Name',
         field: 'thana_name',
         filter: true,
@@ -79,6 +85,11 @@ export class ThanadetailreportComponent implements OnInit {
         sortable: true,
         aggFunc: 'sum',
         valueParser: 'Number(newValue)',
+      },
+      {
+        headerName: 'Month Name',
+        field: 'end_month',
+        filter: true,
       },
       {
         headerName: 'Total Retail',
@@ -106,13 +117,27 @@ export class ThanadetailreportComponent implements OnInit {
   private CrownDetailsReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        filter: true,
+        sortable: true,
+        resizable: true,
+        rowGroup: true,
+      },
+      {
         headerName: 'Thana Name',
         field: 'thana_name',
         filter: true,
         resizable: true,
         sortable: true,
       },
-
+      {
+        headerName: 'Month',
+        field: 'end_month',
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
       {
         headerName: 'Mokam',
         field: 'crown_presence_mokam',
@@ -158,8 +183,22 @@ export class ThanadetailreportComponent implements OnInit {
   private LeadingBrandDetailReport() {
     return [
       {
+        headerName: 'District Name',
+        field: 'district_name',
+        filter: true,
+        sortable: true,
+        rowGroup: true,
+      },
+      {
         headerName: 'Thana Name',
         field: 'thana_name',
+        filter: true,
+        resizable: true,
+        sortable: true,
+      },
+      {
+        headerName: 'Month',
+        field: 'end_month',
         filter: true,
         resizable: true,
         sortable: true,

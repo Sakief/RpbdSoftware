@@ -1,13 +1,8 @@
+<app-header></app-header>
+
 <header class="header">
   <h1>Overall Thana Report</h1>
 </header>
-
-<div *ngFor="let data of rowData; let i = index">
-  <div *ngIf="i < 1">
-    <h4 class="district">District Name : {{ data.district_name }}</h4>
-    <h4 class="month">Month Name : {{ data.end_month }}</h4>
-  </div>
-</div>
 
 <h2>Thana Summary</h2>
 

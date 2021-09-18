@@ -577,7 +577,7 @@ class ThanaDetailReportView(APIView):
     SUM(r.end_month_volume) AS Market_Size,
     COUNT(DISTINCT market_code_id) as mokam,
     COUNT(DISTINCT outlet_id) as total_retail,
-    r.end_month,
+    date_format(r.end_month,'%M-%Y') as end_month,
     d.district_name
 FROM
     brand b,
@@ -612,7 +612,7 @@ class CrownSummaryReportView(APIView):
     B.crown_presence_mokam,
     B.crown_retail,
     B.crown_sales,
-    B.end_month,
+    date_format(B.end_month, '%M-%Y') as end_month,
     B.district_name,
     concat(cast((B.crown_sales/A.Market_Size)*100 as decimal(10,2)),'%') as Crown_Share
 FROM
@@ -670,7 +670,7 @@ class ThanaLeadingBrandReportView(APIView):
     Y.brand_name,
     Y.LeadingBrandRetail,
     Y.LeadingBrandSales,
-    X.end_month,
+    date_format(X.end_month, '%M-%Y') as end_month,
     X.district_name,
     concat(cast((Y.LeadingBrandSales/X.Market_Size)*100 as decimal(10,2)),'%') as Leading_brand_share
 FROM
@@ -1125,7 +1125,7 @@ class MokamSummaryViews(APIView):
     m.market_name,
     SUM(r.end_month_volume) AS Market_Size,
     COUNT(DISTINCT outlet_id) AS total_retail,
-    r.end_month,
+    date_format(r.end_month,'%M-%Y') as end_month,
     d.district_name
 FROM
     brand b,
@@ -1162,7 +1162,7 @@ class CrownMokamSummaryView(APIView):
     B.market_name,
     B.crown_retail,
     B.crown_sales,
-    B.end_month,
+    date_format(B.end_month,'%M-%Y') as end_month,
     B.district_name,
     CONCAT(CAST((B.crown_sales / A.Market_Size) * 100 AS DECIMAL (10 , 2 )),
             '%') AS Crown_Share
@@ -1172,7 +1172,7 @@ FROM
             SUM(end_month_volume) AS Market_Size,
             COUNT(DISTINCT market_code_id) AS mokam,
             COUNT(DISTINCT outlet_id) AS total_retail,
-            end_month,
+            date_format(end_month,'%M-%Y') as end_month,
             district_name,
             market_name
     FROM
@@ -1225,7 +1225,7 @@ class LeadingBrandMokamSummaryView(APIView):
     Y.brand_name,
     Y.LeadingBrandRetail,
     Y.LeadingBrandSales,
-    X.end_month,
+    date_format(X.end_month,'%M-%Y') as end_month,
     X.district_name,
     CONCAT(CAST((Y.LeadingBrandSales / X.Market_Size) * 100
                 AS DECIMAL (10 , 2 )),

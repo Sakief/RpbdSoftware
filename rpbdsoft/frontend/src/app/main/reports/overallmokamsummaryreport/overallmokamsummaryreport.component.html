@@ -1,13 +1,8 @@
-<header class="header">
-  <h1>Overall Thana Report</h1>
-</header>
+<app-header></app-header>
 
-<div *ngFor="let data of overallMokamRowData; let i = index">
-  <div *ngIf="i < 1">
-    <h4 class="district">District Name : {{ data.district_name }}</h4>
-    <h4 class="month">Month Name : {{ data.end_month }}</h4>
-  </div>
-</div>
+<header class="header">
+  <h1>Overall Mokam Report</h1>
+</header>
 
 <h2>Mokam Summary</h2>
 

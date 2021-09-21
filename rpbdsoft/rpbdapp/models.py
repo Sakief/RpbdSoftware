@@ -80,7 +80,7 @@ class Profile(models.Model):
         primary_key=True, verbose_name="Outlet ID", max_length=12
     )
     outlet_type_id = models.CharField(
-        max_length=16, verbose_name="Outlet Type ID", unique=True, null=True
+        max_length=16, verbose_name="Outlet Type ID", unique=True, null=True, blank=True
     )
     outlet_name = models.CharField(
         verbose_name="Outlet Name", max_length=100, blank=True, null=True

@@ -89,7 +89,7 @@ class Profile(models.Model):
         verbose_name="Owner Name", max_length=100, blank=True, null=True
     )
     holding_no = models.CharField(
-        verbose_name="Holding No", max_length=10, blank=True, null=True
+        verbose_name="Holding No", max_length=100, blank=True, null=True
     )
     road_name = models.CharField(
         verbose_name="Road Name/No", max_length=400, blank=True, null=True

@@ -14,6 +14,7 @@ import pymysql
 from platform import python_version
 from pyreportjasper import PyReportJasper
 from django.db import connection
+from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, Http404
 from rest_framework.decorators import api_view, action
@@ -1285,3 +1286,12 @@ WHERE
 
         columns = [col[0] for col in cursor.description]
         return Response([dict(zip(columns, row)) for row in cursor.fetchall()])
+
+
+class HomePageView(TemplateView):
+    def get(self, request, **kwargs):
+        return render(
+            request,
+            "index.html",
+            context=None,
+        )

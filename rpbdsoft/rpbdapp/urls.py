@@ -55,6 +55,7 @@ urlpatterns = [
         "api/report/leadingbrandmokamsummary",
         views.LeadingBrandMokamSummaryView.as_view(),
     ),
+    path("home", views.HomePageView.as_view()),
     path(r"api-token-auth/", obtain_jwt_token),
     path(r"api-token-refresh/", refresh_jwt_token),
 ]

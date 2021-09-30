@@ -37,6 +37,7 @@ export class ProfileCreateComponent implements OnInit {
         zone_code: ['', Validators.required],
         thana_code: ['', Validators.required],
         district_code: ['', Validators.required],
+        division_code: ['', Validators.required],
         outlet_type: [''],
         manager_name: [],
         respondent_designation: [],

@@ -122,4 +122,29 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+  <div>
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel class="expan-pannel">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Retail </mat-panel-title>
+          <mat-panel-description class="mat-expansion-panel-header-description">
+            View, Create, Update or Delete a Retail
+            <mat-icon>storefront</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list-item routerLink="/retail/retail-grid" class="profile"
+          >Retail Grid View <mat-icon>table_view</mat-icon></mat-list-item
+        >
+        <mat-list-item routerLink="/brand/brand-create" class="profile"
+          >Create a New Brand<mat-icon
+            >add_circle_outline</mat-icon
+          ></mat-list-item
+        >
+        <mat-list-item routerLink="/brand/brand-update" class="profile"
+          >Update or Delete a Brand<mat-icon>update</mat-icon
+          ><mat-icon>delete_outline</mat-icon></mat-list-item
+        >
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </mat-nav-list>

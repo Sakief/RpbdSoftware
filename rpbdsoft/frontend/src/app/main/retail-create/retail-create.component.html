@@ -1,0 +1,167 @@
+<mat-toolbar color="primary" class="example-toolbar">
+  <h1 class="example-app-name" routerLink="/main">Crown RPBD</h1>
+</mat-toolbar>
+<div class="grid-Table">
+  <div class="thead">
+    <div class="tr">
+      <div class="td">
+        <button
+          class="btn btn-outline-success"
+          (click)="addRetailForm()"
+          style="width: 180px"
+        >
+          <i class="fa fa-plus"></i> New Retail
+        </button>
+      </div>
+      <div class="td">Outlet ID.</div>
+      <div class="td">Start Month</div>
+      <div class="td">End Month</div>
+      <div class="td">Visit Year</div>
+      <div class="td">Brand Code</div>
+      <div class="td">Visible Brand</div>
+      <div class="td">Start Month Volume</div>
+      <div class="td">End Month Volume</div>
+      <div class="td">Purchase Minimum</div>
+      <div class="td">Purchase Maximum</div>
+      <div class="td">Sales Minimum</div>
+      <div class="td">Sales Maximum</div>
+      <div class="td">Purchase Source</div>
+      <div class="td">Do to Delivery</div>
+      <div class="td">Division Code</div>
+      <div class="td">Monthly Credit</div>
+
+      <div class="td">
+        action
+        <span *ngIf="notification" class="elementToFadeInAndOut">
+          <i class="fas fa-check-circle {{ notification.class }}"></i>
+          {{ notification.message }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="tbody">
+    <form
+      class="tr"
+      [formGroup]="fg"
+      *ngFor="let fg of retailForms.controls"
+      (submit)="retailSubmit(fg)"
+    >
+      <div class="td">
+        <p>Create a Retail</p>
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="outlet_id"
+          style="width: 130px"
+        />
+      </div>
+
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="start_month"
+          style="width: 100px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="end_month"
+          style="width: 100px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="visit_year"
+          style="width: 70px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="brand_code"
+          style="width: 70px"
+        />
+      </div>
+      <div class="td">
+        <input class="form-control" formControlName="vb" style="width: 100px" />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="start_month_volume"
+          style="width: 70px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="end_month_volume"
+          style="width: 70px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="purchase_min"
+          style="width: 180px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="purchase_max"
+          style="width: 180px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="sales_min"
+          style="width: 120px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="sales_max"
+          style="width: 120px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="purchase_source"
+          style="width: 110px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="do_to_delivery"
+          style="width: 100px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="monthly_credit"
+          style="width: 100px"
+        />
+      </div>
+
+      <div class="td">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="fg.invalid"
+          style="width: 130px"
+        >
+          <i class="far fa-save fa-lg"></i> Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

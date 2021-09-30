@@ -297,3 +297,55 @@ class Retail(models.Model):
 
     class Meta:
         db_table = "retail"
+
+
+# class Dealer(models.Model):
+#     outlet_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+#     start_month = models.DateField(verbose_name="Start Month", null=True, blank=True)
+
+#     end_month = models.DateField(verbose_name="End Month", null=True, blank=True)
+#     visit_year = models.CharField(
+#         verbose_name="Visit Year", max_length=10, null=True, blank=True
+#     )
+#     brand_code = models.ForeignKey(Brand, on_delete=models.CASCADE)
+#     vb = models.CharField(
+#         verbose_name="Visible Brand", max_length=15, null=True, blank=True
+#     )
+#     start_month_volume = models.SmallIntegerField(
+#         verbose_name="Start Month Volume", blank=True, null=True
+#     )
+#     end_month_volume = models.SmallIntegerField(
+#         verbose_name="End Month Volume", blank=True, null=True
+#     )
+#     purchase_min = models.SmallIntegerField(
+#         verbose_name="Purchase Min", blank=True, null=True
+#     )
+#     purchase_max = models.SmallIntegerField(
+#         verbose_name="Purchase Max", blank=True, null=True
+#     )
+#     sales_min = models.SmallIntegerField(
+#         verbose_name="Sales Min", blank=True, null=True
+#     )
+#     sales_max = models.SmallIntegerField(
+#         verbose_name="Sales Max", blank=True, null=True
+#     )
+#     purchase_source = models.CharField(
+#         verbose_name="Purchase Source", max_length=20, blank=True, null=True
+#     )
+#     satisfaction_level = models.CharField(
+#         verbose_name="Satisfaction Level", max_length=20, null=True, blank=True
+#     )
+#     # reason_for_disatisfaction = models.TextField(verbos_name="Reason for disatisfaction", null=True, blank=True)
+#     do_to_delivery = models.SmallIntegerField(
+#         verbose_name="Do to Delivery(in hrs)", null=True, blank=True
+#     )
+#     monthly_credit = models.SmallIntegerField(
+#         verbose_name="Monthly Credit", null=True, blank=True
+#     )
+#     # sr_visit_in_week = models.SmallIntegerField(verbose_name="SR visit in week", null=True, blank=True)
+
+#     def __str__(self):
+#         return self.outlet_id
+
+#     class Meta:
+#         db_table = "retail"

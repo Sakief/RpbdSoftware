@@ -177,6 +177,14 @@ export class ProfileGridComponent implements OnInit {
         editable: true,
         sortable: true,
       },
+      {
+        headerName: 'Division',
+        field: 'division_code',
+        filter: true,
+        resizable: true,
+        editable: true,
+        sortable: true,
+      },
 
       {
         headerName: 'Manager Name',

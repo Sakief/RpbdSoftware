@@ -77,6 +77,8 @@ import { OutletsalesComponent } from './reports/outletsalesreport/outletsales/ou
 import { OverallmokamsummaryreportComponent } from './reports/overallmokamsummaryreport/overallmokamsummaryreport.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { RetailGridComponent } from './retail-grid/retail-grid.component';
+import { RetailCreateComponent } from './retail-create/retail-create.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -135,6 +137,13 @@ const routes: Routes = [
       { path: 'merchandising-grid', component: MerchandisingGridComponent },
       { path: 'merchandising-create', component: MerchandisingCreateComponent },
       //{ path: 'profile-update', component: ProfileUpdateComponent },
+    ],
+  },
+  {
+    path: 'retail',
+    children: [
+      { path: 'retail-grid', component: RetailGridComponent },
+      { path: 'retail-create', component: RetailCreateComponent },
     ],
   },
   // {
@@ -208,6 +217,8 @@ const routes: Routes = [
     OverallmokamsummaryreportComponent,
     HeaderComponent,
     SidenavComponent,
+    RetailGridComponent,
+    RetailCreateComponent,
   ],
   imports: [
     CommonModule,

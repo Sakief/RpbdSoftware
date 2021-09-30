@@ -59,6 +59,7 @@ export class DistrictReportComponent implements OnInit {
           {
             headerName: 'End Month',
             field: 'end_month',
+            filter: true,
           },
           {
             headerName: 'Sales',

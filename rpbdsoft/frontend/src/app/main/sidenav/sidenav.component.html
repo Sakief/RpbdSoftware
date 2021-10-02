@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list class="list">
   <mat-divider></mat-divider>
 
   <h2 matSubheader>Pages</h2>
@@ -135,14 +135,36 @@
         <mat-list-item routerLink="/retail/retail-grid" class="profile"
           >Retail Grid View <mat-icon>table_view</mat-icon></mat-list-item
         >
-        <mat-list-item routerLink="/brand/brand-create" class="profile"
-          >Create a New Brand<mat-icon
+        <mat-list-item routerLink="/retail/retail-create" class="profile"
+          >Create a New Retail<mat-icon
             >add_circle_outline</mat-icon
           ></mat-list-item
         >
-        <mat-list-item routerLink="/brand/brand-update" class="profile"
-          >Update or Delete a Brand<mat-icon>update</mat-icon
-          ><mat-icon>delete_outline</mat-icon></mat-list-item
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div>
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel class="expan-pannel">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Merchandise </mat-panel-title>
+          <mat-panel-description class="mat-expansion-panel-header-description">
+            View, Create a Merchandise Data
+            <mat-icon>store</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list-item
+          routerLink="/merchandising/merchandising-grid"
+          class="profile"
+          >Merchandise grid view<mat-icon>table_view</mat-icon></mat-list-item
+        >
+        <mat-list-item
+          routerLink="/merchandising/merchandising-create"
+          class="profile"
+          >Create a New Merchandise data<mat-icon
+            >add_circle_outline</mat-icon
+          ></mat-list-item
         >
       </mat-expansion-panel>
     </mat-accordion>

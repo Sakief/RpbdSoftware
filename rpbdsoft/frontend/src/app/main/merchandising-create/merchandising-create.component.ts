@@ -1,69 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  FormArray,
-  Validators,
-} from '@angular/forms';
-//import { Observable }    from 'rxjs/Observable';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MerchandiseService } from 'src/app/services/merchandising.service';
 
 @Component({
   selector: 'app-merchandising-create',
   templateUrl: './merchandising-create.component.html',
   styleUrls: ['./merchandising-create.component.scss'],
 })
+@Injectable({
+  providedIn: 'root',
+})
 export class MerchandisingCreateComponent implements OnInit {
-  empForm!: FormGroup;
+  merchandisingForms: FormArray = this.fb.array([]);
+  notification: any;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private merchandisingservice: MerchandiseService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-    this.empForm = this.fb.group({
-      employees: this.fb.array([]),
-    });
+  ngOnInit(): void {}
+
+  addMerchandiseForm() {
+    this.merchandisingForms.push(
+      this.fb.group({
+        outlet_id: ['', Validators.required],
+        visit_start_month: ['', Validators.required],
+        visit_end_month: ['', Validators.required],
+        brand_code: ['', Validators.required],
+        Quantity: [''],
+      })
+    );
   }
 
-  employees(): FormArray {
-    return this.empForm.get('employees') as FormArray;
+  merchandisingSubmit(fg: FormGroup) {
+    this.merchandisingservice
+      .createMerchandise(fg.value)
+      .subscribe((res: any) => {
+        fg.patchValue({ outlet_id: res.outlet_id });
+        this.showNotification('insert');
+      });
   }
 
-  newEmployee(): FormGroup {
-    return this.fb.group({
-      firstName: '',
-      lastName: '',
-      skills: this.fb.array([]),
-    });
-  }
+  showNotification(category: any) {
+    switch (category) {
+      case 'insert':
+        this.notification = { class: 'text-success', message: 'saved!' };
+        break;
 
-  addEmployee() {
-    this.employees().push(this.newEmployee());
-  }
-
-  removeEmployee(empIndex: number) {
-    this.employees().removeAt(empIndex);
-  }
-
-  employeeSkills(empIndex: number): FormArray {
-    return this.employees().at(empIndex).get('skills') as FormArray;
-  }
-
-  newSkill(): FormGroup {
-    return this.fb.group({
-      skill: '',
-      exp: '',
-    });
-  }
-
-  addEmployeeSkill(empIndex: number) {
-    this.employeeSkills(empIndex).push(this.newSkill());
-  }
-
-  removeEmployeeSkill(empIndex: number, skillIndex: number) {
-    this.employeeSkills(empIndex).removeAt(skillIndex);
-  }
-
-  onSubmit() {
-    console.log(this.empForm.value);
+      default:
+        break;
+    }
+    setTimeout(() => {
+      this.notification = null;
+    }, 2000);
   }
 }

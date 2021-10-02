@@ -1,44 +1,98 @@
-<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
-  <div formArrayName="employees">
-    <div *ngFor="let employee of employees().controls; let empIndex = index">
-      <div
-        [formGroupName]="empIndex"
-        style="border: 1px solid blue; padding: 10px; width: 600px; margin: 5px"
-      >
-        {{ empIndex }}<mat-label> Outlet ID </mat-label>
-        <input type="text" formControlName="firstName" />
-        Visit Month:
-        <input type="text" formControlName="lastName" />
-
-        <button (click)="removeEmployee(empIndex)">Remove</button>
-
-        <div formArrayName="skills">
-          <div
-            *ngFor="
-              let skill of employeeSkills(empIndex).controls;
-              let skillIndex = index
-            "
-          >
-            <div [formGroupName]="skillIndex">
-              {{ skillIndex }}
-              Brand Code :
-              <input type="text" formControlName="skill" />
-              Merchandising Tools:
-              <input type="text" formControlName="exp" />
-              Qunatity:
-              <input type="text" formControlName="exp" />
-
-              <button (click)="removeEmployeeSkill(empIndex, skillIndex)">
-                Remove
-              </button>
-            </div>
-          </div>
-        </div>
-        <button type="button" (click)="addEmployeeSkill(empIndex)">
-          Add Brands
+<mat-toolbar color="primary" class="example-toolbar">
+  <h1 class="example-app-name" routerLink="/main">Crown RPBD</h1>
+</mat-toolbar>
+<div class="grid-Table">
+  <div class="thead">
+    <div class="tr">
+      <div class="td">
+        <button
+          class="btn btn-outline-success"
+          (click)="addMerchandiseForm()"
+          style="width: 180px"
+        >
+          <i class="fa fa-plus"></i> New Merchandise
         </button>
       </div>
+      <div class="td">Outlet ID.</div>
+      <div class="td">Visit Start Month</div>
+      <div class="td">Visit End Month</div>
+      <div class="td">Brand Code</div>
+      <div class="td">Merchandsing Tools</div>
+      <div class="td">Quantity</div>
+
+      <div class="td">
+        action
+        <span *ngIf="notification" class="elementToFadeInAndOut">
+          <i class="fas fa-check-circle {{ notification.class }}"></i>
+          {{ notification.message }}
+        </span>
+      </div>
     </div>
-    <button type="button" (click)="addEmployee()">Add Outlet</button>
   </div>
-</form>
+  <div class="tbody">
+    <form
+      class="tr"
+      [formGroup]="fg"
+      *ngFor="let fg of merchandisingForms.controls"
+      (submit)="merchandisingSubmit(fg)"
+    >
+      <div class="td">
+        <p>Create new Merchandising Data</p>
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="outlet_id"
+          style="width: 130px"
+        />
+      </div>
+
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="visit_start_month"
+          style="width: 130px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="visit_end_month"
+          style="width: 130px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="brand_code"
+          style="width: 70px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="merchandsing_tools"
+          style="width: 170px"
+        />
+      </div>
+      <div class="td">
+        <input
+          class="form-control"
+          formControlName="quantity"
+          style="width: 70px"
+        />
+      </div>
+
+      <div class="td">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="fg.invalid"
+          style="width: 130px"
+        >
+          <i class="far fa-save fa-lg"></i> Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

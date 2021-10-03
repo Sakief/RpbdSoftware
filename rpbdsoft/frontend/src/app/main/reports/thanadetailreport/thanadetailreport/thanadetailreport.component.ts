@@ -67,6 +67,7 @@ export class ThanadetailreportComponent implements OnInit {
         headerName: 'District Name',
         field: 'district_name',
         filter: true,
+        floatingFilter: true,
         rowGroup: true,
       },
       {

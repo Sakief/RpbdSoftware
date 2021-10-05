@@ -29,6 +29,9 @@ from rpbdapp.models import (
     Brand,
     Merchandising,
     Retail,
+    DealerProfile,
+    DealerShipBrand,
+    DealerShipSales,
 )
 from rpbdapp.serializers import (
     DivisionSerializer,
@@ -42,6 +45,9 @@ from rpbdapp.serializers import (
     RetailSerializer,
     TestSqlSerializer,
     ThanaDetailReportSerializer,
+    DealerProfileSerializer,
+    DealerShipBrandSerializer,
+    DelaerShipSalesSerializer,
 )
 from rest_framework.response import Response
 from rest_framework import filters
@@ -1295,3 +1301,62 @@ class HomePageView(TemplateView):
             "index.html",
             context=None,
         )
+
+
+class DealerProfileGridView(APIView):
+    def get(self, request, format=None):
+        dealers = DealerProfile.objects.all()
+        serializer = DealerProfileSerializer(dealers, many=True)
+        response = serializer.data
+        return Response(response, status=status.HTTP_200_OK)
+
+
+class DealerProfileCreateView(APIView):
+    def get_object(self, pk):
+        try:
+            return DealerProfile.objects.get(pk=pk)
+        except DealerProfile.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        dealers = DealerProfile.objects.all()
+        serializer = DealerProfileSerializer(dealers, many=True)
+        response = serializer.data
+        return Response(response, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=["POST"])
+    def post(self, request, format=None):
+        serializer = DealerProfileSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Repsonse(serializer.data, status=HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class DealerProfileUpdateView(APIView):
+    def get_object(self, pk):
+        try:
+            return DealerProfile.objects.get(pk=pk)
+        except DealerProfile.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        dealers = self.get_object(pk)
+        serializer = DealerProfileSerializer(dealers)
+        response = serializer.data
+        return Response(response, status=statu.HTTP_200_OK)
+
+    @action(detail=True, methods=["PUT"])
+    def put(self, request, pk, format=None):
+        dealers_update = self.get_object(pk)
+        serializer = DealerProfileSerializer(dealers_update, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=["DELETE"])
+    def delete(self, request, pk, format=None):
+        dealers_delete = self.get_object(pk)
+        dealers_delete.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

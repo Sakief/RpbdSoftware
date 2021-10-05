@@ -55,7 +55,10 @@ urlpatterns = [
         "api/report/leadingbrandmokamsummary",
         views.LeadingBrandMokamSummaryView.as_view(),
     ),
-    path("home", views.HomePageView.as_view()),
-    path(r"api-token-auth/", obtain_jwt_token),
-    path(r"api-token-refresh/", refresh_jwt_token),
+    path("api/dealerprofile-grid", views.DealerProfileGridView.as_view()),
+    path("api/dealerprofile-create", views.DealerProfileCreateView.as_view()),
+    path("api/dealerprofile-update/<str:pk>", views.DealerProfileUpdateView.as_view()),
+    # path("home", views.HomePageView.as_view()),
+    # path(r"api-token-auth/", obtain_jwt_token),
+    # path(r"api-token-refresh/", refresh_jwt_token),
 ]

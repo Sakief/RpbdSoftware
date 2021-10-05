@@ -138,3 +138,77 @@ class ThanaDetailReportSerializer(serializers.ModelSerializer):
             "end_month",
             "district_name",
         )
+
+
+class DealerProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        field = (
+            "dealer_id",
+            "dealer_name",
+            "holding_no",
+            "road_name",
+            "block_no",
+            "union",
+            "post_office",
+            "market_code",
+            "zone_code",
+            "thana_code",
+            "district_code",
+            "division_code",
+            "manager_name",
+            "respondent_designation",
+            "contact_no1",
+            "contact_no2",
+            "contact_no3",
+            "total_staff",
+            "outlet_landmark",
+            "outlet_status",
+            "year_of_establishment",
+            "monthly_average_volume",
+            "total_retail",
+            "self_transport",
+            "storage_capacity",
+            "front_length",
+            "front_width",
+            "business_pattern",
+            "nid",
+            "asset",
+            "liability",
+            "business_ethics",
+            "succesor",
+            "under_crown_dealer" "under_crown_sr",
+            "potential_crown_dealer",
+            "potential_crown_retailer",
+        )
+
+
+class DealerShipBrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        field = (
+            "deakership_code",
+            "dealer_id",
+            "brand_code",
+            "delivery_service",
+            "distribution_area_thana",
+            "distribution_area_market",
+            "brand_wise_manpower",
+            "brand_wise_retail",
+        )
+
+
+class DelaerShipSalesSerializer(serializers.ModelSerializer):
+    class Meta:
+        field = (
+            "dealership_code",
+            "start_month",
+            "end_month",
+            "start_month_sales_volume",
+            "end_month_sales_volume",
+            "landing_price",
+            "dp",
+            "tp",
+            "eup",
+            "do_to_delivery_time",
+            "monthly_credit",
+            "micro_delivery",
+        )

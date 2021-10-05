@@ -1,15 +1,13 @@
 <form [formGroup]="divisionform" (ngSubmit)="addDivision()">
-  <label>
-    Division Code </label>
-    <input
-      type="text"
-      formControlName="division_code"
-      [ngClass]="{ 'is-invalid': submitted && f.division_code.errors }"
-    /><br />
-    <div *ngIf="submitted && f.division_code.errors" class="invalid-feedback">
-      <div *ngIf="f.division_code.errors.required">Division Code is required</div>
-    </div>
-  
+  <label> Division Code </label>
+  <input
+    type="text"
+    formControlName="division_code"
+    [ngClass]="{ 'is-invalid': submitted && f.division_code.errors }"
+  /><br />
+  <div *ngIf="submitted && f.division_code.errors" class="invalid-feedback">
+    <div *ngIf="f.division_code.errors.required">Division Code is required</div>
+  </div>
 
   <label
     >Division Name <input type="text" formControlName="division_name" /><br />
@@ -17,5 +15,3 @@
 
   <button type="submit">Submit</button>
 </form>
-
-{{ divisionform.value | json }}

@@ -63,7 +63,7 @@ import { ExpanPannelComponent } from './expan-pannel/expan-pannel.component';
 import { MerchandisingGridComponent } from './merchandising-grid/merchandising-grid.component';
 import { MerchandiseService } from '../services/merchandising.service';
 import { MerchandisingCreateComponent } from './merchandising-create/merchandising-create.component';
-import { ReportComponent } from './report/report.component';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThanadetailreportComponent } from './reports/thanadetailreport/thanadetailreport/thanadetailreport.component';
 import { Thanadetailservice } from '../services/thanadetailreport.service';
@@ -198,7 +198,6 @@ const routes: Routes = [
     MerchandisingGridComponent,
     MerchandisingCreateComponent,
 
-    ReportComponent,
     NavbarComponent,
     ThanadetailreportComponent,
     DistrictReportComponent,

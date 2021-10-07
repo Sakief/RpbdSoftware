@@ -176,7 +176,8 @@ class DealerProfileSerializer(serializers.ModelSerializer):
             "liability",
             "business_ethics",
             "succesor",
-            "under_crown_dealer" "under_crown_sr",
+            "under_crown_dealer",
+            "under_crown_sr",
             "potential_crown_dealer",
             "potential_crown_retailer",
         )
@@ -185,7 +186,7 @@ class DealerProfileSerializer(serializers.ModelSerializer):
 class DealerShipBrandSerializer(serializers.ModelSerializer):
     class Meta:
         field = (
-            "deakership_code",
+            "dealership_code",
             "dealer_id",
             "brand_code",
             "delivery_service",

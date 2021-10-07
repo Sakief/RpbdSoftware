@@ -51,6 +51,7 @@ urlpatterns = [
     path("api/report/outletsalesvolume", views.OutletSalesVolumeView.as_view()),
     path("api/report/mokamsummary", views.MokamSummaryViews.as_view()),
     path("api/report/crownmokamsummary", views.CrownMokamSummaryView.as_view()),
+    path("api/report/profilelist", views.ProfileListReportView.as_view()),
     path(
         "api/report/leadingbrandmokamsummary",
         views.LeadingBrandMokamSummaryView.as_view(),

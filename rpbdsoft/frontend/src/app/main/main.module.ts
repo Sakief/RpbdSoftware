@@ -78,6 +78,8 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { RetailGridComponent } from './retail-grid/retail-grid.component';
 import { RetailCreateComponent } from './retail-create/retail-create.component';
+import { DealerProfileGridComponent } from './dealer-profile-grid/dealer-profile-grid.component';
+import { ProfilelistreportComponent } from './reports/profilelistreport/profilelistreport.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -145,6 +147,12 @@ const routes: Routes = [
       { path: 'retail-create', component: RetailCreateComponent },
     ],
   },
+  {
+    path: 'dealer',
+    children: [
+      { path: 'dealer-profile-grid', component: DealerProfileGridComponent },
+    ],
+  },
 
   {
     path: 'reports',
@@ -162,6 +170,10 @@ const routes: Routes = [
       {
         path: 'overallmokamreports',
         component: OverallmokamsummaryreportComponent,
+      },
+      {
+        path: 'profilelistreports',
+        component: ProfilelistreportComponent,
       },
     ],
   },
@@ -211,6 +223,8 @@ const routes: Routes = [
     SidenavComponent,
     RetailGridComponent,
     RetailCreateComponent,
+    DealerProfileGridComponent,
+    ProfilelistreportComponent,
   ],
   imports: [
     CommonModule,

@@ -1360,3 +1360,29 @@ class DealerProfileUpdateView(APIView):
         dealers_delete = self.get_object(pk)
         dealers_delete.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ProfileListReportView(APIView):
+    def get(self, request):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """
+                SELECT d.district_name, t.thana_name, z.zone_name, m.market_name,
+                       p.outlet_id, p.outlet_name, p.owner_name, p.contact_no1,p.contact_no2,
+                       p.holding_no, p.road_name, p.block_no, p.village, p.union,
+                       p.post_office
+                FROM  district d, thana t, zone z, market m, profile p 
+                WHERE d.district_code = p.district_code_id 
+                AND   t.thana_code = p.thana_code_id
+                AND   z.zone_code = p.zone_code_id
+                AND   m.market_code = p.market_code_id
+                
+                
+""",
+            )
+
+        def dictfetchall(cursor):
+            "Return all rows from a cursor as a dict"
+
+        columns = [col[0] for col in cursor.description]
+        return Response([dict(zip(columns, row)) for row in cursor.fetchall()])

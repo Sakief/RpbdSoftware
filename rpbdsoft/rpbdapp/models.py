@@ -150,7 +150,7 @@ class Profile(models.Model):
         verbose_name="Year of Estbalishment,", max_length=4, blank=True, null=True
     )
     business_status = models.CharField(
-        verbose_name="Business Status", max_length=20, blank=True, null=True
+        verbose_name="Business Status", max_length=50, blank=True, null=True
     )
     gerographical_location = models.CharField(
         verbose_name="Geographical Location", max_length=100, blank=True, null=True
